@@ -73,10 +73,10 @@ export const tidy5eListeners = function (html, actor) {
   html.find('.toggle-allow-edit span').click(async (event) => {
     event.preventDefault();
 
-    if(actor.getFlag('tidy5e-sheet', 'allow-edit')){
-      await actor.unsetFlag('tidy5e-sheet', 'allow-edit');
+    if(actor.getFlag("foundryvtt-tidy5e-sheet-nolat", 'allow-edit')){
+      await actor.unsetFlag("foundryvtt-tidy5e-sheet-nolat", 'allow-edit');
     } else {
-      await actor.setFlag('tidy5e-sheet', 'allow-edit', true);
+      await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", 'allow-edit', true);
     }
   });
 

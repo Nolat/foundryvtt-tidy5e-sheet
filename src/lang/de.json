@@ -291,7 +291,7 @@
   },
   "TIDY5E.Settings.CustomExhaustionIcon": {
     "name": "Eigenes Icon für Erschöpfungseffekt.",
-    "hint": "Wähle dein eigenes Icon durch Setzen eines Bildpfades. Nur für \"Tidy 5e\"-Einstellung (z. B.: modules/tidy5e-sheet/images/exhaustion.svg)."
+    "hint": "Wähle dein eigenes Icon durch Setzen eines Bildpfades. Nur für \"Tidy 5e\"-Einstellung (z. B.: modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg)."
   },
   "TIDY5E.Settings.CustomExhaustionEffect": {
     "name": "Name des CUB Erschöpfungseffekts.",

@@ -28,7 +28,7 @@ export default class Tidy5eNPC extends dnd5e.applications.actor
    */
   static get defaultOptions() {
     let defaultTab =
-      game.settings.get("tidy5e-sheet", "defaultActionsTab") != "default"
+      game.settings.get("foundryvtt-tidy5e-sheet-nolat", "defaultActionsTab") != "default"
         ? "attributes"
         : "actions";
     if (!game.modules.get("character-actions-list-5e")?.active)
@@ -36,7 +36,7 @@ export default class Tidy5eNPC extends dnd5e.applications.actor
 
     return mergeObject(super.defaultOptions, {
       classes: ["tidy5e", "sheet", "actor", "npc"],
-      width: game.settings.get("tidy5e-sheet", "npsSheetWidth") ?? 740,
+      width: game.settings.get("foundryvtt-tidy5e-sheet-nolat", "npsSheetWidth") ?? 740,
       height: 720,
       tabs: [
         {
@@ -58,8 +58,8 @@ export default class Tidy5eNPC extends dnd5e.applications.actor
    */
   get template() {
     if (!game.user.isGM && this.actor.limited)
-      return "modules/tidy5e-sheet/templates/actors/tidy5e-npc-ltd.html";
-    return "modules/tidy5e-sheet/templates/actors/tidy5e-npc.html";
+      return "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/tidy5e-npc-ltd.html";
+    return "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/tidy5e-npc.html";
   }
 
   /* -------------------------------------------- */
@@ -231,7 +231,7 @@ export default class Tidy5eNPC extends dnd5e.applications.actor
     tidy5eListeners(html, actor);
     tidy5eContextMenu(html);
     tidy5eShowActorArt(html, actor);
-    if (game.settings.get("tidy5e-sheet", "itemCardsForNpcs")) {
+    if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "itemCardsForNpcs")) {
       tidy5eItemCard(html, actor);
     }
     tidy5eAmmoSwitch(html, actor);
@@ -283,10 +283,10 @@ export default class Tidy5eNPC extends dnd5e.applications.actor
     });
 
     html.find(".toggle-personality-info").click(async (event) => {
-      if (actor.getFlag("tidy5e-sheet", "showNpcPersonalityInfo")) {
-        await actor.unsetFlag("tidy5e-sheet", "showNpcPersonalityInfo");
+      if (actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "showNpcPersonalityInfo")) {
+        await actor.unsetFlag("foundryvtt-tidy5e-sheet-nolat", "showNpcPersonalityInfo");
       } else {
-        await actor.setFlag("tidy5e-sheet", "showNpcPersonalityInfo", true);
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", "showNpcPersonalityInfo", true);
       }
     });
 
@@ -310,19 +310,19 @@ export default class Tidy5eNPC extends dnd5e.applications.actor
 
     // toggle proficient skill visibility in the skill list
     html.find(".skills-list .toggle-proficient").click(async (event) => {
-      if (actor.getFlag("tidy5e-sheet", "npcSkillsExpanded")) {
-        await actor.unsetFlag("tidy5e-sheet", "npcSkillsExpanded");
+      if (actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "npcSkillsExpanded")) {
+        await actor.unsetFlag("foundryvtt-tidy5e-sheet-nolat", "npcSkillsExpanded");
       } else {
-        await actor.setFlag("tidy5e-sheet", "npcSkillsExpanded", true);
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", "npcSkillsExpanded", true);
       }
     });
 
     // toggle empty traits visibility in the traits list
     html.find(".traits .toggle-traits").click(async (event) => {
-      if (actor.getFlag("tidy5e-sheet", "traitsExpanded")) {
-        await actor.unsetFlag("tidy5e-sheet", "traitsExpanded");
+      if (actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "traitsExpanded")) {
+        await actor.unsetFlag("foundryvtt-tidy5e-sheet-nolat", "traitsExpanded");
       } else {
-        await actor.setFlag("tidy5e-sheet", "traitsExpanded", true);
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", "traitsExpanded", true);
       }
     });
 
@@ -385,7 +385,7 @@ export default class Tidy5eNPC extends dnd5e.applications.actor
   async _onShortRest(event) {
     event.preventDefault();
     await this._onSubmit(event);
-    if (game.settings.get("tidy5e-sheet", "restingForNpcsChatDisabled")) {
+    if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "restingForNpcsChatDisabled")) {
       let obj = {
         dialog: true,
         chat: false,
@@ -405,7 +405,7 @@ export default class Tidy5eNPC extends dnd5e.applications.actor
   async _onLongRest(event) {
     event.preventDefault();
     await this._onSubmit(event);
-    if (game.settings.get("tidy5e-sheet", "restingForNpcsChatDisabled")) {
+    if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "restingForNpcsChatDisabled")) {
       let obj = {
         dialog: true,
         chat: false,
@@ -521,11 +521,11 @@ async function resetTempHp(app, html, data) {
 async function setSheetClasses(app, html, data) {
   const { token } = app;
   const actor = app.actor;
-  if (actor.getFlag("tidy5e-sheet", "showNpcPersonalityInfo")) {
+  if (actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "showNpcPersonalityInfo")) {
     html.find(".tidy5e-sheet .left-notes").removeClass("hidden");
   }
-  if (game.settings.get("tidy5e-sheet", "rightClickDisabled")) {
-    if (game.settings.get("tidy5e-sheet", "classicControlsEnabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "rightClickDisabled")) {
+    if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "classicControlsEnabled")) {
       html
         .find(".tidy5e-sheet .grid-layout .items-list")
         .addClass("alt-context");
@@ -533,48 +533,48 @@ async function setSheetClasses(app, html, data) {
       html.find(".tidy5e-sheet .items-list").addClass("alt-context");
     }
   }
-  if (game.settings.get("tidy5e-sheet", "classicControlsEnabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "classicControlsEnabled")) {
     tidy5eClassicControls(html);
   }
-  if (game.settings.get("tidy5e-sheet", "traitsMovedBelowResourceNpc")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "traitsMovedBelowResourceNpc")) {
     let altPos = html.find(".alt-trait-pos");
     let traits = html.find(".traits");
     altPos.append(traits);
   }
-  if (!game.settings.get("tidy5e-sheet", "restingForNpcsEnabled")) {
+  if (!game.settings.get("foundryvtt-tidy5e-sheet-nolat", "restingForNpcsEnabled")) {
     html.find(".tidy5e-sheet.tidy5e-npc .rest-container").remove();
   }
   if (
-    game.settings.get("tidy5e-sheet", "portraitStyle") == "npc" ||
-    game.settings.get("tidy5e-sheet", "portraitStyle") == "all"
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "portraitStyle") == "npc" ||
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "portraitStyle") == "all"
   ) {
     html.find(".tidy5e-sheet.tidy5e-npc .profile").addClass("roundPortrait");
   }
-  if (game.settings.get("tidy5e-sheet", "hpOverlayDisabledNpc")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hpOverlayDisabledNpc")) {
     html
       .find(".tidy5e-sheet.tidy5e-npc .profile")
       .addClass("disable-hp-overlay");
   }
-  if (game.settings.get("tidy5e-sheet", "hpBarDisabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hpBarDisabled")) {
     html.find(".tidy5e-sheet .profile").addClass("disable-hp-bar");
   }
-  if (game.settings.get("tidy5e-sheet", "hpOverlayBorderNpc") > 0) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hpOverlayBorderNpc") > 0) {
     $(".system-dnd5e")
       .get(0)
       .style.setProperty(
         "--npc-border",
-        game.settings.get("tidy5e-sheet", "hpOverlayBorderNpc") + "px"
+        game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hpOverlayBorderNpc") + "px"
       );
   } else {
     $(".system-dnd5e").get(0).style.removeProperty("--npc-border");
   }
-  if (game.settings.get("tidy5e-sheet", "traitsAlwaysShownNpc")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "traitsAlwaysShownNpc")) {
     html.find(".tidy5e-sheet.tidy5e-npc .traits").addClass("always-visible");
   }
-  if (game.settings.get("tidy5e-sheet", "traitLabelsEnabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "traitLabelsEnabled")) {
     html.find(".tidy5e-sheet.tidy5e-npc .traits").addClass("show-labels");
   }
-  if (game.settings.get("tidy5e-sheet", "skillsAlwaysShownNpc")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "skillsAlwaysShownNpc")) {
     html
       .find(".tidy5e-sheet.tidy5e-npc .skills-list")
       .addClass("always-visible");
@@ -582,27 +582,27 @@ async function setSheetClasses(app, html, data) {
   if (
     token &&
     token.actor.prototypeToken.actorLink &&
-    game.settings.get("tidy5e-sheet", "linkMarkerNpc") == "both"
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "linkMarkerNpc") == "both"
   ) {
     html.find(".tidy5e-sheet.tidy5e-npc").addClass("linked");
   }
   if (
     token &&
     !token.actor.prototypeToken.actorLink &&
-    (game.settings.get("tidy5e-sheet", "linkMarkerNpc") == "unlinked" ||
-      game.settings.get("tidy5e-sheet", "linkMarkerNpc") == "both")
+    (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "linkMarkerNpc") == "unlinked" ||
+      game.settings.get("foundryvtt-tidy5e-sheet-nolat", "linkMarkerNpc") == "both")
   ) {
     html.find(".tidy5e-sheet.tidy5e-npc").addClass("unlinked");
   }
   if (
     !token &&
-    (game.settings.get("tidy5e-sheet", "linkMarkerNpc") == "unlinked" ||
-      game.settings.get("tidy5e-sheet", "linkMarkerNpc") == "both")
+    (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "linkMarkerNpc") == "unlinked" ||
+      game.settings.get("foundryvtt-tidy5e-sheet-nolat", "linkMarkerNpc") == "both")
   ) {
     html.find(".tidy5e-sheet.tidy5e-npc").addClass("original");
   }
   $(".info-card-hint .key").html(
-    game.settings.get("tidy5e-sheet", "itemCardsFixKey")
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "itemCardsFixKey")
   );
 }
 
@@ -646,8 +646,8 @@ async function hideSpellbook(app, html, data) {
 // Edit Protection - Hide empty Inventory Sections, add and delete-buttons
 async function editProtection(app, html, data) {
   let actor = app.actor;
-  if (!actor.getFlag("tidy5e-sheet", "allow-edit")) {
-    if (game.settings.get("tidy5e-sheet", "editTotalLockEnabled")) {
+  if (!actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "allow-edit")) {
+    if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "editTotalLockEnabled")) {
       html.find(".skill input").prop("disabled", true);
       html.find(".skill .config-button").remove();
       html.find(".skill .proficiency-toggle").remove();

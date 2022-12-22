@@ -283,7 +283,7 @@
   },
   "TIDY5E.Settings.CustomExhaustionIcon": {
     "name": "Icône personnalisée pour l'épuisement",
-    "hint": "Définir une icône d'effet d'épuisement personnalisée en fournissant une url d'image. Disponible uniquement lorsque l'effet d'épuisement est défini sur \"tidy 5e\" (par exemple : modules/tidy5e-sheet/images/exhaustion.svg)."
+    "hint": "Définir une icône d'effet d'épuisement personnalisée en fournissant une url d'image. Disponible uniquement lorsque l'effet d'épuisement est défini sur \"tidy 5e\" (par exemple : modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg)."
   },
   "TIDY5E.Settings.CustomExhaustionEffect": {
     "name": "CUB : nom personnalisé de l'effet d'épuisement",

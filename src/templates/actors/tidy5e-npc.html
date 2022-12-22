@@ -225,7 +225,7 @@
             <li class="toggle-proficient" data-show-skills="{{ localize 'TIDY5E.Show' }}" data-hide-skills="{{ localize 'TIDY5E.Hide' }}"> {{ localize "DND5E.NotProficient" }}</li>
           </ul>
           {{!-- Traits --}}
-          {{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-traits.html"}}
+          {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-traits.html"}}
         </div>
 
         <section class="center-pane">
@@ -266,7 +266,7 @@
           {{!-- Alternative Trait Position --}}
 					<div class="alt-trait-pos"></div>
 
-          {{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}
+          {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-features.html" sections=features}}
 
           <div class="inventory-currency">  
             <ul class="currency">
@@ -283,14 +283,14 @@
             </ul>
           </div>
           
-          {{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-npc-spellbook.html"}}
+          {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-npc-spellbook.html"}}
         </section>
         
       </div>
 
       {{!-- Effects Tab --}}
       <div class="tab effects" data-group="primary" data-tab="effects">
-        {{>  "modules/tidy5e-sheet/templates/actors/parts/tidy5e-effects.html"}}
+        {{>  "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-effects.html"}}
       </div>
 
       {{!-- Biography Tab --}}

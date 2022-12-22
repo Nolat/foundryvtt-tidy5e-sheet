@@ -8,7 +8,7 @@ export const tidy5eAmmoSwitch = function (html, actor) {
         .getActiveTokens(false, true)
         .find((t) => t.data._id === token.id).actor; // get synthetic actor
     const item = actor.items.get(itemId);
-    const equippedOnly = game.settings.get("tidy5e-sheet", "ammoEquippedOnly");
+    const equippedOnly = game.settings.get("foundryvtt-tidy5e-sheet-nolat", "ammoEquippedOnly");
     const ammoItems = actor.items.filter(
       (x) =>
         x.system.consumableType === "ammo" &&

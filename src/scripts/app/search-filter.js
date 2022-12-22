@@ -20,13 +20,13 @@ export const tidy5eSearchFilter = function (html, actor) {
         value = $(this).val();
       switch (id) {
         case "item-search" :
-          await actor.setFlag('tidy5e-sheet', 'item-search', value);
+          await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", 'item-search', value);
         break;
         case "spell-search" :
-        await actor.setFlag('tidy5e-sheet', 'spell-search', value);
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", 'spell-search', value);
         break;
         case "feat-search" :
-        await actor.setFlag('tidy5e-sheet', 'feat-search', value);
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", 'feat-search', value);
         break;
       }
     // if(id == "item-search"){
@@ -94,19 +94,19 @@ export const tidy5eSearchFilter = function (html, actor) {
       filterInventoryList(searchField);
       switch (id) {
         case "item-search" :
-        await actor.setFlag('tidy5e-sheet', 'item-search', '');
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", 'item-search', '');
         break;
         case "spell-search" :
-        await actor.setFlag('tidy5e-sheet', 'spell-search', '');
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", 'spell-search', '');
         break;
         case "feat-search" :
-        await actor.setFlag('tidy5e-sheet', 'feat-search', '');
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", 'feat-search', '');
         break;
       }
       // if(id == "item-search"){
-      //   await actor.setFlag('tidy5e-sheet', 'item-search', '');
+      //   await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", 'item-search', '');
       // } else {
-      //   await actor.setFlag('tidy5e-sheet', 'spell-search', '');
+      //   await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", 'spell-search', '');
       // }
     });
   }

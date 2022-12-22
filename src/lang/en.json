@@ -291,7 +291,7 @@
   },
   "TIDY5E.Settings.CustomExhaustionIcon": {
     "name": "Custom exhaustion effect icon.",
-    "hint": "Set your custom exhaustion effect icon by providing an image url. Only available when Exhaustion Effect is set to \"tidy 5e\" (e. g.: modules/tidy5e-sheet/images/exhaustion.svg)."
+    "hint": "Set your custom exhaustion effect icon by providing an image url. Only available when Exhaustion Effect is set to \"tidy 5e\" (e. g.: modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg)."
   },
   "TIDY5E.Settings.CustomExhaustionEffect": {
     "name": "Custom CUB exhaustion effect name.",

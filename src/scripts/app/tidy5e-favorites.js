@@ -357,10 +357,12 @@ export const addFavorites = async function (app, html, data, position) {
     data.favSpells = spellCount > 0 ? favSpells : false;
     data.editable = app.options.editable;
 
-    await loadTemplates(["modules/tidy5e-sheet/templates/favorites/item.hbs"]);
+    await loadTemplates([
+      "modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/item.hbs",
+    ]);
     let favHtml = $(
       await renderTemplate(
-        "modules/tidy5e-sheet/templates/favorites/template.hbs",
+        "modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/template.hbs",
         data
       )
     );
@@ -541,7 +543,7 @@ export const addFavorites = async function (app, html, data, position) {
     favContent.append(favHtml);
     // attributesTab.prepend(favMarker);
     html.find(".tab.attributes").scrollTop(position.top);
-    if (game.settings.get("tidy5e-sheet", "rightClickDisabled")) {
+    if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "rightClickDisabled")) {
       favContent.find(".items-list").addClass("alt-context");
     }
   }

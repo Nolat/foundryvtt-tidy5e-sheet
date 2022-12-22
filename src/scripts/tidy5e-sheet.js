@@ -19,15 +19,15 @@ export class Tidy5eSheet extends dnd5e.applications.actor
     if (
       !game.user.isGM &&
       this.actor.limited &&
-      !game.settings.get("tidy5e-sheet", "expandedSheetEnabled")
+      !game.settings.get("foundryvtt-tidy5e-sheet-nolat", "expandedSheetEnabled")
     )
-      return "modules/tidy5e-sheet/templates/actors/tidy5e-sheet-ltd.html";
-    return "modules/tidy5e-sheet/templates/actors/tidy5e-sheet.html";
+      return "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/tidy5e-sheet-ltd.html";
+    return "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/tidy5e-sheet.html";
   }
 
   static get defaultOptions() {
     let defaultTab =
-      game.settings.get("tidy5e-sheet", "defaultActionsTab") != "default"
+      game.settings.get("foundryvtt-tidy5e-sheet-nolat", "defaultActionsTab") != "default"
         ? "attributes"
         : "actions";
     if (!game.modules.get("character-actions-list-5e")?.active)
@@ -36,7 +36,7 @@ export class Tidy5eSheet extends dnd5e.applications.actor
     return mergeObject(super.defaultOptions, {
       classes: ["tidy5e", "sheet", "actor", "character"],
       blockFavTab: true,
-      width: game.settings.get("tidy5e-sheet", "playerSheetWidth") ?? 740,
+      width: game.settings.get("foundryvtt-tidy5e-sheet-nolat", "playerSheetWidth") ?? 740,
       height: 840,
       tabs: [
         {
@@ -101,16 +101,16 @@ export class Tidy5eSheet extends dnd5e.applications.actor
       event.preventDefault();
 
       if ($(event.currentTarget).hasClass("spellbook-layout")) {
-        if (actor.getFlag("tidy5e-sheet", "spellbook-grid")) {
-          await actor.unsetFlag("tidy5e-sheet", "spellbook-grid");
+        if (actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "spellbook-grid")) {
+          await actor.unsetFlag("foundryvtt-tidy5e-sheet-nolat", "spellbook-grid");
         } else {
-          await actor.setFlag("tidy5e-sheet", "spellbook-grid", true);
+          await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", "spellbook-grid", true);
         }
       } else {
-        if (actor.getFlag("tidy5e-sheet", "inventory-grid")) {
-          await actor.unsetFlag("tidy5e-sheet", "inventory-grid");
+        if (actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "inventory-grid")) {
+          await actor.unsetFlag("foundryvtt-tidy5e-sheet-nolat", "inventory-grid");
         } else {
-          await actor.setFlag("tidy5e-sheet", "inventory-grid", true);
+          await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", "inventory-grid", true);
         }
       }
     });
@@ -119,10 +119,10 @@ export class Tidy5eSheet extends dnd5e.applications.actor
     html.find(".traits-toggle").click(async (event) => {
       event.preventDefault();
 
-      if (actor.getFlag("tidy5e-sheet", "traits-compressed")) {
-        await actor.unsetFlag("tidy5e-sheet", "traits-compressed");
+      if (actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "traits-compressed")) {
+        await actor.unsetFlag("foundryvtt-tidy5e-sheet-nolat", "traits-compressed");
       } else {
-        await actor.setFlag("tidy5e-sheet", "traits-compressed", true);
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", "traits-compressed", true);
       }
     });
 
@@ -159,10 +159,10 @@ export class Tidy5eSheet extends dnd5e.applications.actor
 
     // toggle empty traits visibility in the traits list
     html.find(".traits .toggle-traits").click(async (event) => {
-      if (actor.getFlag("tidy5e-sheet", "traitsExpanded")) {
-        await actor.unsetFlag("tidy5e-sheet", "traitsExpanded");
+      if (actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "traitsExpanded")) {
+        await actor.unsetFlag("foundryvtt-tidy5e-sheet-nolat", "traitsExpanded");
       } else {
-        await actor.setFlag("tidy5e-sheet", "traitsExpanded", true);
+        await actor.setFlag("foundryvtt-tidy5e-sheet-nolat", "traitsExpanded", true);
       }
     });
 
@@ -306,11 +306,11 @@ async function editProtection(app, html, data) {
   let actor = app.actor;
   if (
     game.user.isGM &&
-    game.settings.get("tidy5e-sheet", "editGmAlwaysEnabled")
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "editGmAlwaysEnabled")
   ) {
     html.find(".classic-controls").addClass("gmEdit");
-  } else if (!actor.getFlag("tidy5e-sheet", "allow-edit")) {
-    if (game.settings.get("tidy5e-sheet", "editTotalLockEnabled")) {
+  } else if (!actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "allow-edit")) {
+    if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "editTotalLockEnabled")) {
       html.find(".skill input").prop("disabled", true);
       html.find(".skill .config-button").remove();
       // html.find(".skill .proficiency-toggle").remove();
@@ -368,7 +368,7 @@ async function editProtection(app, html, data) {
     html.find(".inventory-list .item-control.item-delete").remove();
 
     if (
-      game.settings.get("tidy5e-sheet", "editEffectsGmOnlyEnabled") &&
+      game.settings.get("foundryvtt-tidy5e-sheet-nolat", "editEffectsGmOnlyEnabled") &&
       !game.user.isGM
     ) {
       html
@@ -390,7 +390,7 @@ async function editProtection(app, html, data) {
         if (
           $(this).hasClass("effects-list") &&
           !game.user.isGM &&
-          game.settings.get("tidy5e-sheet", "editEffectsGmOnlyEnabled")
+          game.settings.get("foundryvtt-tidy5e-sheet-nolat", "editEffectsGmOnlyEnabled")
         ) {
           $(this).prepend(
             `<span class="notice">${game.i18n.localize(
@@ -408,8 +408,8 @@ async function editProtection(app, html, data) {
     });
   } else if (
     !game.user.isGM &&
-    actor.getFlag("tidy5e-sheet", "allow-edit") &&
-    game.settings.get("tidy5e-sheet", "editEffectsGmOnlyEnabled")
+    actor.getFlag("foundryvtt-tidy5e-sheet-nolat", "allow-edit") &&
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "editEffectsGmOnlyEnabled")
   ) {
     let itemContainer = html.find(".effects-list.items-list");
 
@@ -432,7 +432,7 @@ async function editProtection(app, html, data) {
 // Add Character Class List
 async function addClassList(app, html, data) {
   if (data.editable) {
-    if (!game.settings.get("tidy5e-sheet", "classListDisabled")) {
+    if (!game.settings.get("foundryvtt-tidy5e-sheet-nolat", "classListDisabled")) {
       // let actor = game.actors.entities.find(a => a.data._id === data.actor._id);
       let actor = app.actor;
       let classList = [];
@@ -561,7 +561,7 @@ async function tidyCustomEffect(actor, change) {
 
 // add active effects marker
 function markActiveEffects(app, html, data) {
-  if (game.settings.get("tidy5e-sheet", "activeEffectsMarker")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "activeEffectsMarker")) {
     let actor = app.actor;
     let items = data.actor.items;
     let marker = `<span class="ae-marker" title="Item has active effects">Æ</span>`;
@@ -666,16 +666,16 @@ function spellSlotMarker(app, html, data) {
 async function setSheetClasses(app, html, data) {
   // let actor = game.actors.entities.find(a => a.data._id === data.actor._id);
   let actor = app.actor;
-  if (!game.settings.get("tidy5e-sheet", "playerNameEnabled")) {
+  if (!game.settings.get("foundryvtt-tidy5e-sheet-nolat", "playerNameEnabled")) {
     html.find(".tidy5e-sheet #playerName").remove();
   }
-  if (game.settings.get("tidy5e-sheet", "journalTabDisabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "journalTabDisabled")) {
     html
       .find('.tidy5e-sheet .tidy5e-navigation a[data-tab="journal"]')
       .remove();
   }
-  if (game.settings.get("tidy5e-sheet", "rightClickDisabled")) {
-    if (game.settings.get("tidy5e-sheet", "classicControlsEnabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "rightClickDisabled")) {
+    if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "classicControlsEnabled")) {
       html
         .find(".tidy5e-sheet .grid-layout .items-list")
         .addClass("alt-context");
@@ -683,77 +683,77 @@ async function setSheetClasses(app, html, data) {
       html.find(".tidy5e-sheet .items-list").addClass("alt-context");
     }
   }
-  if (game.settings.get("tidy5e-sheet", "classicControlsEnabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "classicControlsEnabled")) {
     tidy5eClassicControls(html);
   }
   if (
-    game.settings.get("tidy5e-sheet", "portraitStyle") == "pc" ||
-    game.settings.get("tidy5e-sheet", "portraitStyle") == "all"
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "portraitStyle") == "pc" ||
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "portraitStyle") == "all"
   ) {
     html.find(".tidy5e-sheet .profile").addClass("roundPortrait");
   }
-  if (game.settings.get("tidy5e-sheet", "hpOverlayDisabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hpOverlayDisabled")) {
     html.find(".tidy5e-sheet .profile").addClass("disable-hp-overlay");
   }
-  if (game.settings.get("tidy5e-sheet", "hpBarDisabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hpBarDisabled")) {
     html.find(".tidy5e-sheet .profile").addClass("disable-hp-bar");
   }
-  if (game.settings.get("tidy5e-sheet", "inspirationDisabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "inspirationDisabled")) {
     html.find(".tidy5e-sheet .profile .inspiration").remove();
   }
-  if (game.settings.get("tidy5e-sheet", "inspirationAnimationDisabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "inspirationAnimationDisabled")) {
     html
       .find(".tidy5e-sheet .profile .inspiration label i")
       .addClass("disable-animation");
   }
-  if (game.settings.get("tidy5e-sheet", "hpOverlayBorder") > 0) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hpOverlayBorder") > 0) {
     $(".system-dnd5e")
       .get(0)
       .style.setProperty(
         "--pc-border",
-        game.settings.get("tidy5e-sheet", "hpOverlayBorder") + "px"
+        game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hpOverlayBorder") + "px"
       );
   } else {
     $(".system-dnd5e").get(0).style.removeProperty("--pc-border");
   }
-  if (game.settings.get("tidy5e-sheet", "hideIfZero")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hideIfZero")) {
     html.find(".tidy5e-sheet .profile").addClass("autohide");
   }
-  if (game.settings.get("tidy5e-sheet", "exhaustionDisabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "exhaustionDisabled")) {
     html.find(".tidy5e-sheet .profile .exhaustion-container").remove();
   }
-  if (game.settings.get("tidy5e-sheet", "exhaustionOnHover")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "exhaustionOnHover")) {
     html.find(".tidy5e-sheet .profile").addClass("exhaustionOnHover");
   }
 
-  if (game.settings.get("tidy5e-sheet", "inspirationOnHover")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "inspirationOnHover")) {
     html.find(".tidy5e-sheet .profile").addClass("inspirationOnHover");
   }
-  if (game.settings.get("tidy5e-sheet", "traitsMovedBelowResource")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "traitsMovedBelowResource")) {
     let altPos = html.find(".alt-trait-pos");
     let traits = html.find(".traits");
     altPos.append(traits);
   }
-  if (!game.settings.get("tidy5e-sheet", "traitsTogglePc")) {
+  if (!game.settings.get("foundryvtt-tidy5e-sheet-nolat", "traitsTogglePc")) {
     html.find(".tidy5e-sheet .traits").addClass("always-visible");
   }
-  if (game.settings.get("tidy5e-sheet", "traitLabelsEnabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "traitLabelsEnabled")) {
     html.find(".tidy5e-sheet .traits").addClass("show-labels");
   }
   if (game.user.isGM) {
     html.find(".tidy5e-sheet").addClass("isGM");
   }
   if (
-    game.settings.get("tidy5e-sheet", "hiddenDeathSavesEnabled") &&
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "hiddenDeathSavesEnabled") &&
     !game.user.isGM
   ) {
     html.find(".tidy5e-sheet .death-saves").addClass("gmOnly");
   }
-  if (game.settings.get("tidy5e-sheet", "quantityAlwaysShownEnabled")) {
+  if (game.settings.get("foundryvtt-tidy5e-sheet-nolat", "quantityAlwaysShownEnabled")) {
     html.find(".item").addClass("quantityAlwaysShownEnabled");
   }
   $(".info-card-hint .key").html(
-    game.settings.get("tidy5e-sheet", "itemCardsFixKey")
+    game.settings.get("foundryvtt-tidy5e-sheet-nolat", "itemCardsFixKey")
   );
 }
 

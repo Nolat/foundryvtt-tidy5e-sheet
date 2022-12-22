@@ -21,7 +21,7 @@ export const tidy5eContextMenu = function (html) {
         // right click opens context menu
         item.addEventListener('contextmenu', e => e.preventDefault());
         event.preventDefault();
-        if(!game.settings.get("tidy5e-sheet", "rightClickDisabled") && $(item).hasClass('context-enabled')){
+        if(!game.settings.get("foundryvtt-tidy5e-sheet-nolat", "rightClickDisabled") && $(item).hasClass('context-enabled')){
           html.find('.item').removeClass('context');
           html.find('.item .context-menu').hide();
           itemContextMenu(event);
@@ -31,7 +31,7 @@ export const tidy5eContextMenu = function (html) {
   });
 
   html.find('.item-list .item .activate-context-menu').mousedown( async (event) => {
-    if(game.settings.get("tidy5e-sheet", "rightClickDisabled")){
+    if(game.settings.get("foundryvtt-tidy5e-sheet-nolat", "rightClickDisabled")){
       switch (event.which) {
         case 1:
           event.preventDefault();

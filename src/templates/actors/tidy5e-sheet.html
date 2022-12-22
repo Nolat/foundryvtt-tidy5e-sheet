@@ -300,7 +300,7 @@
 					</ul>
 
 					{{!-- Traits --}}
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-traits.html"}}
+					{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-traits.html"}}
 				</div>
 
 				<section class="center-pane">
@@ -350,29 +350,29 @@
 			{{!-- Inventory Tab --}}
 			<div class="tab inventory {{#if actor.flags.tidy5e-sheet.inventory-grid}}grid{{/if}}" data-group="primary" data-tab="inventory">
 				{{#if actor.flags.tidy5e-sheet.inventory-grid}} 
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory-grid.html" sections=inventory}}
+					{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-inventory-grid.html" sections=inventory}}
 					{{else}}
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory.html" sections=inventory}}
+					{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-inventory.html" sections=inventory}}
 				{{/if}}
 			</div>
 
 			{{!-- Spellbook Tab --}}
 			<div class="tab spellbook {{#if actor.flags.tidy5e-sheet.spellbook-grid}}grid{{/if}}" data-group="primary" data-tab="spellbook">
 				{{#if actor.flags.tidy5e-sheet.spellbook-grid}} 
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-grid.html"}}
+					{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-spellbook-grid.html"}}
 					{{else}}
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook.html"}}
+					{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-spellbook.html"}}
 				{{/if}}
 			</div>
 
 			{{!-- Features Tab --}}
 			<div class="tab features" data-group="primary" data-tab="features">
-				{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}
+				{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-features.html" sections=features}}
 			</div>
 
 			{{!-- Effects Tab --}}
 			<div class="tab effects" data-group="primary" data-tab="effects">
-				{{>  "modules/tidy5e-sheet/templates/actors/parts/tidy5e-effects.html"}}
+				{{>  "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-effects.html"}}
 			</div>
 
 			{{!-- Biography Tab --}}

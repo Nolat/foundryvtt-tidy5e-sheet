@@ -6,8 +6,8 @@ async function updateExhaustion(actorEntity) {
   
   let exhaustion = actorEntity.system.attributes.exhaustion;
 
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') == 'tidy5e') {
-    let icon = game.settings.get('tidy5e-sheet', 'exhaustionEffectIcon');
+  if(game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectsEnabled') == 'tidy5e') {
+    let icon = game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectIcon');
     let currentExhaustion;
     let exhaustionPresent = null;
     let effectName = `${game.i18n.localize("DND5E.ConExhaustion")} ${game.i18n.localize("DND5E.AbbreviationLevel")} ${exhaustion}`;
@@ -109,9 +109,9 @@ async function updateExhaustion(actorEntity) {
     }
 
     for (const effectEntity of actorEntity.effects) {
-      if (typeof effectEntity.getFlag('tidy5e-sheet', 'exhaustion') === 'number') {
+      if (typeof effectEntity.getFlag("foundryvtt-tidy5e-sheet-nolat", 'exhaustion') === 'number') {
         exhaustionPresent = effectEntity;
-        currentExhaustion = effectEntity.getFlag('tidy5e-sheet', 'exhaustion');
+        currentExhaustion = effectEntity.getFlag("foundryvtt-tidy5e-sheet-nolat", 'exhaustion');
         // console.log(currentExhaustion);
         if (currentExhaustion != exhaustion) {
           await exhaustionPresent.delete();
@@ -135,7 +135,7 @@ async function updateExhaustion(actorEntity) {
           changes: exhaustionSet,
           duration: {'seconds': 31536000},
           flags: {
-            'tidy5e-sheet': {
+            "foundryvtt-tidy5e-sheet-nolat": {
               'exhaustion': exhaustion
             }
           },
@@ -148,9 +148,9 @@ async function updateExhaustion(actorEntity) {
     }
   }
 
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') == 'custom'){	
-    const levels = game.settings.get('tidy5e-sheet', 'exhaustionEffectCustomTiers');
-    const effectName = game.settings.get('tidy5e-sheet', 'exhaustionEffectCustom');
+  if(game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectsEnabled') == 'custom'){	
+    const levels = game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectCustomTiers');
+    const effectName = game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectCustom');
 
     const id = actorEntity._id;
     const tokens = canvas.tokens.placeables;
@@ -178,7 +178,7 @@ async function updateExhaustion(actorEntity) {
 
 // Hooks Update Actor
 Hooks.on('updateActor', function (actorEntity, _, __, userId) {
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') != 'default') {
+  if(game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectsEnabled') != 'default') {
     if (game.userId !== userId || actorEntity.constructor.name != "Actor5e") {
       // Only act if we initiated the update ourselves, and the effect is a child of a character
       return;
@@ -190,7 +190,7 @@ Hooks.on('updateActor', function (actorEntity, _, __, userId) {
 
 // Rest reduces by 1
 Hooks.on(`restCompleted`, (actorEntity, data) => { 
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') == 'default') {
+  if(game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectsEnabled') == 'default') {
     return
   }
   let actor = game.actors.get(actorEntity._id);
@@ -202,11 +202,11 @@ Hooks.on(`restCompleted`, (actorEntity, data) => {
 
 // set exhaustion value to cub effect level
 Hooks.on(`createActiveEffect`, (effect, data, id) => { 
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') == 'custom') {
+  if(game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectsEnabled') == 'custom') {
 
     let actor = game.actors.get(effect.parent._id);
     let effectName = effect.label;
-    if (effectName.includes(game.settings.get('tidy5e-sheet', 'exhaustionEffectCustom'))) {
+    if (effectName.includes(game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectCustom'))) {
       // console.log(effectName);
       let exhaustion = effectName.slice(-1);
       // console.log(exhaustion);
@@ -217,10 +217,10 @@ Hooks.on(`createActiveEffect`, (effect, data, id) => {
 
 // reset exhaustion value when cub effect is removed
 Hooks.on(`deleteActiveEffect`, (effect, data, id) => { 
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') == 'custom') {
+  if(game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectsEnabled') == 'custom') {
     const actor = game.actors.get(effect.parent._id);
-    const effectName = game.settings.get('tidy5e-sheet', 'exhaustionEffectCustom');
-    const levels = game.settings.get('tidy5e-sheet', 'exhaustionEffectCustomTiers');
+    const effectName = game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectCustom');
+    const levels = game.settings.get("foundryvtt-tidy5e-sheet-nolat", 'exhaustionEffectCustomTiers');
     const effectLabel = effect.label;
     if (effectLabel.includes(effectName)) {
 

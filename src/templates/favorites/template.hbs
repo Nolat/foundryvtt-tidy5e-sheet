@@ -10,7 +10,7 @@
     </li>
     <ul class="item-list">
       {{#each favItems as |item id|}}
-       {{> "modules/tidy5e-sheet/templates/favorites/item.hbs" item=item}}
+       {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/item.hbs" item=item}}
       {{/each}}
     </ul>
   {{/if}}
@@ -24,7 +24,7 @@
     </li>
     <ul class="item-list">
       {{#each favFeats as |feat lvl|}}
-      {{> "modules/tidy5e-sheet/templates/favorites/item.hbs" item=feat}}
+      {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/item.hbs" item=feat}}
       {{/each}}
     </ul>
   {{/if}}
@@ -58,7 +58,7 @@
         {{/if}}
         <ul class="item-list">
           {{#each section.spells as |spell id|}}
-            {{> "modules/tidy5e-sheet/templates/favorites/item.hbs" item=spell}}
+            {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/item.hbs" item=spell}}
           {{/each}}
         </ul>
       {{/if}}
@@ -95,7 +95,7 @@
         {{/if}}
         <ul class="item-list">
           {{#each section.spells as |spell id|}}
-            {{> "modules/tidy5e-sheet/templates/favorites/item.hbs" item=spell}}
+            {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/item.hbs" item=spell}}
           {{/each}}
         </ul>
       {{/if}}

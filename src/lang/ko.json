@@ -291,7 +291,7 @@
   },
   "TIDY5E.Settings.CustomExhaustionIcon": {
     "name": "사용자 지정 탈진 효과 아이콘.",
-    "hint": "이미지 URL을 사용해 사용자 지정 탈진 효과 아이콘을 설정한다. 탈진 효과가 \"tidy 5e\"로 설정된 경우에만 사용할 수 있다. (e. g.: modules/tidy5e-sheet/images/exhaustion.svg)."
+    "hint": "이미지 URL을 사용해 사용자 지정 탈진 효과 아이콘을 설정한다. 탈진 효과가 \"tidy 5e\"로 설정된 경우에만 사용할 수 있다. (e. g.: modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg)."
   },
   "TIDY5E.Settings.CustomExhaustionEffect": {
     "name": "사용자 지정 CUB 탈진 효과 이름",
