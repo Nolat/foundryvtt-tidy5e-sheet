@@ -919,11 +919,6 @@
 .tidy5e.sheet.actor .has-note:hover .note {
   display: inline-block;
 }
-.tidy5e.sheet.actor .profile .exhaustion-container.disabled,
-.tidy5e.sheet.actor .profile.dead .exhaustion-container:not(.level-6),
-.tidy5e.sheet.actor .dead .exhaustion-container:not(.level-6) {
-  display: none;
-}
 .tidy5e.sheet.actor .profile:not(.dead) .portrait-hp {
   border-radius: 5px;
   width: 120px !important;
@@ -982,7 +977,7 @@
   border-radius: 20px;
 }
 .tidy5e.sheet.actor .exhaustion-container:hover .exhaustion-wrap {
-  width: 174px;
+  width: 277px;
 }
 .tidy5e.sheet.actor .exhaustion-wrap .exhaustion-icon {
   display: block;
@@ -1020,6 +1015,10 @@
   background: var(--tertiary-color) !important;
   color: var(--primary-font);
 }
+.tidy5e.sheet.actor .exhaustion-wrap .exhaust-level li[data-elvl="11"]  {
+  padding-left: 4px;
+  padding-right: 4px;
+}
 .tidy5e.sheet.actor .exhaustion-container .note p {
   color: rgb(255, 255, 255);
   display: block;
@@ -1045,53 +1044,91 @@
 .tidy5e.sheet.actor .exhaustion-container.level-0 .exhaustion-icon i:nth-child(1) {
   display: inline-block;
 }
-.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0) .exhaustion-icon {
-  color: var(--exhaustion-font);
-}
-.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0) .exhaustion-icon,
-.tidy5e.sheet.actor .exhaustion-container.level-1 .exhaust-level li:nth-of-type(-n+2),
-.tidy5e.sheet.actor .exhaustion-container.level-2 .exhaust-level li:nth-of-type(-n+3) {
-  color: var(--exhaustion-font);
-  background: var(--exhaustion-lvl1);
-}
 .tidy5e.sheet.actor .exhaustion-container.level-1 .exhaustion-icon i:nth-child(2) {
   display: inline-block;
 }
-.tidy5e.sheet.actor .exhaustion-container.level-2 .exhaustion-icon i:nth-child(3) {
+
+.tidy5e.sheet.actor .exhaustion-container.level-2 .exhaustion-icon i:nth-child(2) {
   display: inline-block;
 }
-.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2) .exhaustion-icon,
-.tidy5e.sheet.actor .exhaustion-container.level-3 .exhaust-level li:nth-of-type(-n+4),
-.tidy5e.sheet.actor .exhaustion-container.level-4 .exhaust-level li:nth-of-type(-n+5) {
-  background: var(--exhaustion-lvl2);
-}
-.tidy5e.sheet.actor .exhaustion-container.level-3 .exhaustion-icon i:nth-child(4) {
+
+.tidy5e.sheet.actor .exhaustion-container.level-3 .exhaustion-icon i:nth-child(3) {
   display: inline-block;
 }
-.tidy5e.sheet.actor .exhaustion-container.level-4 .exhaustion-icon i:nth-child(5) {
+
+.tidy5e.sheet.actor .exhaustion-container.level-4 .exhaustion-icon i:nth-child(3) {
   display: inline-block;
 }
-.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3):not(.level-4) .exhaustion-icon,
+
+.tidy5e.sheet.actor .exhaustion-container.level-5 .exhaustion-icon i:nth-child(4) {
+  display: inline-block;
+}
+
+.tidy5e.sheet.actor .exhaustion-container.level-6 .exhaustion-icon i:nth-child(4) {
+  display: inline-block;
+}
+
+.tidy5e.sheet.actor .exhaustion-container.level-7 .exhaustion-icon i:nth-child(5) {
+  display: inline-block;
+}
+
+.tidy5e.sheet.actor .exhaustion-container.level-8 .exhaustion-icon i:nth-child(5) {
+  display: inline-block;
+}
+
+.tidy5e.sheet.actor .exhaustion-container.level-9 .exhaustion-icon i:nth-child(6) {
+  display: inline-block;
+}
+
+.tidy5e.sheet.actor .exhaustion-container.level-10 .exhaustion-icon i:nth-child(6) {
+  display: inline-block;
+}
+
+.tidy5e.sheet.actor .exhaustion-container.level-11 .exhaustion-icon i:nth-child(7) {
+  display: inline-block;
+}
+
+.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0) .exhaustion-icon {
+  color: var(--exhaustion-font);
+}
+
+.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0) .exhaustion-icon,
+.tidy5e.sheet.actor .exhaustion-container.level-1 .exhaust-level li:nth-of-type(-n+2),
+.tidy5e.sheet.actor .exhaustion-container.level-2 .exhaust-level li:nth-of-type(-n+3),
+.tidy5e.sheet.actor .exhaustion-container.level-3 .exhaust-level li:nth-of-type(-n+4) {
+  color: var(--exhaustion-font);
+  background: var(--exhaustion-lvl1);
+}
+
+.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3) .exhaustion-icon,
+.tidy5e.sheet.actor .exhaustion-container.level-4 .exhaust-level li:nth-of-type(-n+5),
 .tidy5e.sheet.actor .exhaustion-container.level-5 .exhaust-level li:nth-of-type(-n+6),
 .tidy5e.sheet.actor .exhaustion-container.level-6 .exhaust-level li:nth-of-type(-n+7) {
+  background: var(--exhaustion-lvl2);
+}
+
+.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3):not(.level-4):not(.level-5):not(.level-6) .exhaustion-icon,
+.tidy5e.sheet.actor .exhaustion-container.level-7 .exhaust-level li:nth-of-type(-n+8),
+.tidy5e.sheet.actor .exhaustion-container.level-8 .exhaust-level li:nth-of-type(-n+9),
+.tidy5e.sheet.actor .exhaustion-container.level-9 .exhaust-level li:nth-of-type(-n+10),
+.tidy5e.sheet.actor .exhaustion-container.level-10 .exhaust-level li:nth-of-type(-n+11),
+.tidy5e.sheet.actor .exhaustion-container.level-11 .exhaust-level li:nth-of-type(-n+12) {
   background: var(--exhaustion-lvl3);
 }
-.tidy5e.sheet.actor .exhaustion-container.level-5 .exhaustion-icon i:nth-child(6) {
-  display: inline-block;
-}
-.tidy5e.sheet.actor .exhaustion-container.level-6 .exhaustion-icon i:nth-child(7) {
-  display: inline-block;
-}
+
 .tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0) .level-display {
   color: var(--exhaustion-font);
   background: var(--exhaustion-lvl1);
 }
-.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2) .level-display {
+
+.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3) .level-display {
   background: var(--exhaustion-lvl2);
 }
-.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3):not(.level-4) .level-display {
+
+.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3):not(.level-4):not(.level-5):not(.level-6) .level-display {
   background: var(--exhaustion-lvl3);
 }
+
 .tidy5e.sheet.actor .portrait-hd {
   position: absolute;
   z-index: 25;

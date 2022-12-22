@@ -14,97 +14,41 @@ async function updateExhaustion(actorEntity) {
 
     // define exhaustion effects by level
     let exhaustionSet = [];
-    let movementSet = ['walk', 'swim', 'fly', 'climb', 'burrow'];
     if(exhaustion != 0){
-      if(exhaustion > 0 ){
-        let effect =  {
-          key: "flags.midi-qol.disadvantage.ability.check.all",
-          value: true,
-          mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
-          priority: 20
+      if (exhaustion <= 10) {
+        let effect = {
+          key: "data.bonuses.All-Attacks",
+          value: -exhaustion,
+          mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+          priority: 20,
         };
         exhaustionSet.push(effect);
-      }
-      if(exhaustion > 1 && exhaustion < 5 ){
-        if (actorEntity.system?.attributes?.movement) {
-          movementSet = [];
-          Object.entries(actorEntity.system.attributes.movement).forEach(speed => {
-            if (speed[0] == "hover" || speed[0] == "units") {
-              return;
-            }
-            if (speed[1] > 0) {
-              movementSet.push(speed[0]);
-            }
-          });
-        }
-        movementSet.forEach( el => {
-          const changeKey = "data.attributes.movement." + el;
-          let effect = {
-            key: changeKey,
-            value: "0.5",
-            mode: CONST.ACTIVE_EFFECT_MODES.MULTIPLY,
-            priority: 20
-          };
-          exhaustionSet.push(effect);
-        });
-      }
-      if(exhaustion > 2 ){
-        let effect =  {
-          key: "flags.midi-qol.disadvantage.ability.save.all",
-          value: true,
-          mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
-          priority: 20
-        };
-        exhaustionSet.push(effect);   
 
         effect = {
-          key: "flags.midi-qol.disadvantage.attack.all",
-          value: true,
-          mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
-          priority: 20
+          key: "data.bonuses.abilities.save",
+          value: -exhaustion,
+          mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+          priority: 20,
         };
-        exhaustionSet.push(effect);   
-      }
-      if(exhaustion > 3 ){
-        let effect =  {
-          key: "data.attributes.hp.max",
-          value: "0.5",
-          mode: 1,
-          priority: 20
+        exhaustionSet.push(effect);
+
+        effect = {
+          key: "data.bonuses.abilities.check",
+          value: -exhaustion,
+          mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+          priority: 20,
         };
         exhaustionSet.push(effect);
       }
-      if(exhaustion > 4 ){
-        if (actorEntity.system?.attributes?.movement) {
-          movementSet = [];
-          Object.entries(actorEntity.system.attributes.movement).forEach(speed => {
-            if (speed[0] == "hover" || speed[0] == "units") {
-              return;
-            }
-            if (speed[1] > 0) {
-              movementSet.push(speed[0]);
-            }
-          });
-        }
-        movementSet.forEach( el => {
-          const changeKey = "data.attributes.movement." + el;
-          let effect = {
-            key: changeKey,
-            value: "0",
-            mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
-            priority: 20
-          };
-          exhaustionSet.push(effect);
-        });    
-      }
-      if(exhaustion > 5 ){
-        let effect =  {
+
+      if (exhaustion > 10) {
+        let effect = {
           key: "data.attributes.hp.value",
           value: "0",
           mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
-          priority: 20
+          priority: 20,
         };
-        exhaustionSet.push(effect);      
+        exhaustionSet.push(effect);
       }
     }
 
