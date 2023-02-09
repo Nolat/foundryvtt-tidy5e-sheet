@@ -1,6 +1,6 @@
 {
 	"id": "foundryvtt-tidy5e-sheet-nolat",
-	"title": "Tidy5e Sheet",
+	"title": "Tidy5e Sheet (Nolat)",
 	"description": "Replaces the default D&D 5e character and NPC sheet with an alternate layout focused on a cleaner UI",
 	"version": "0.8.39",
 	"authors": [
