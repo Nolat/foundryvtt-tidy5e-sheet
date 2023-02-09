@@ -1424,7 +1424,7 @@
 	white-space: nowrap;
 }
 .tidy5e.sheet.actor .class-list {
-	position: relative;
+	/* position: relative; */
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
