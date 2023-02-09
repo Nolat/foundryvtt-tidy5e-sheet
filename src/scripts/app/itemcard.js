@@ -6,12 +6,8 @@ export const tidy5eItemCard = function (html, actor) {
 
 	let itemCardsForAllItems = game.settings.get(CONSTANTS.MODULE_ID, "itemCardsForAllItems");
 
-	let containerTrigger = itemCardsForAllItems
-		? html.find(".inventory-list:not(.character-actions-dnd5e)")
-		: html.find(".grid-layout .inventory-list");
-	let cardTrigger = itemCardsForAllItems
-		? html.find(".inventory-list:not(.character-actions-dnd5e) .item-list .item")
-		: html.find(".grid-layout .item-list .item");
+	let containerTrigger = itemCardsForAllItems ? html.find(".inventory-list:not(.character-actions-dnd5e)") : html.find(".grid-layout .inventory-list");
+	let cardTrigger = itemCardsForAllItems ? html.find(".inventory-list:not(.character-actions-dnd5e) .item-list .item") : html.find(".grid-layout .item-list .item");
 
 	let infoContainer = html.find("#item-info-container"),
 		infoContainerContent = html.find("#item-info-container-content");
@@ -217,6 +213,6 @@ export const tidy5eItemCard = function (html, actor) {
 		e.preventDefault();
 		let itemId = $(this).closest(".info-card").attr("data-item-id");
 		let action = $(this).attr("data-action");
-		$(`.tidy5e-sheet .item[data-item-id='${itemId}'] .item-buttons .button[data-action='${action}']`).trigger(e);
+		$(`.foundryvtt-tidy5e-sheet-nolat .item[data-item-id='${itemId}'] .item-buttons .button[data-action='${action}']`).trigger(e);
 	});
 };

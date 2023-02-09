@@ -1,5 +1,5 @@
 {{!-- Spellbook Header --}}
-{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-header.html"}}
+{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-spellbook-header.html"}}
 
 <div class="grid-layout">
   <ul class="inventory-list spellbook-list items-list">
@@ -32,7 +32,7 @@
       {{#with (lookup @root.itemContext item.id) as |ctx|}}
         <li class="item {{~#if section.canPrepare}} preparable{{/if}} {{~#if item.system.preparation.prepared}} prepared{{/if}} {{#if (eq item.system.preparation.mode 'always')}} alwaysprepared{{/if}} {{#if (eq item.system.preparation.mode 'pact')}} pact{{/if}} {{#if (eq item.system.preparation.mode 'atwill')}} atwill{{/if}} {{#if (eq item.system.preparation.mode 'innate')}} innate{{/if}}" data-item-id="{{item.id}}">
 
-          {{#if item.flags.tidy5e-sheet.favorite}}
+          {{#if item.flags.foundryvtt-tidy5e-sheet-nolat.favorite}}
           <i class="fas fa-bookmark icon-fav" title="{{localize 'TIDY5E.isFav'}}"></i>
           {{/if}}
 
@@ -123,4 +123,4 @@
 </div>
 
 {{!-- Spellbook Footer --}}
-{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-footer.html"}}
+{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-spellbook-footer.html"}}

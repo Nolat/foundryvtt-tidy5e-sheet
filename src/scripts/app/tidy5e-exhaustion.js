@@ -23,9 +23,7 @@ export async function updateExhaustion(actorEntity) {
 		let icon = game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectIcon");
 		let currentExhaustion;
 		let exhaustionPresent = null;
-		let effectName = `${game.i18n.localize("DND5E.ConExhaustion")} ${game.i18n.localize(
-			"DND5E.AbbreviationLevel"
-		)} ${exhaustion}`;
+		let effectName = `${game.i18n.localize("DND5E.ConExhaustion")} ${game.i18n.localize("DND5E.AbbreviationLevel")} ${exhaustion}`;
 
 		// define exhaustion effects by level
 		let exhaustionSet = [];
@@ -211,12 +209,7 @@ export async function updateExhaustion(actorEntity) {
 				await game.dfreds.effectInterface.addEffect(contextEffect);
 			}
 		} else {
-			warn(
-				`${game.i18n.localize(
-					"The module 'Dfreds Convenient Effects' is not active, but the module setting 'Auto Exhaustion effects' is enabled"
-				)}`,
-				true
-			);
+			warn(`${game.i18n.localize("The module 'Dfreds Convenient Effects' is not active, but the module setting 'Auto Exhaustion effects' is enabled")}`, true);
 		}
 	}
 
@@ -248,12 +241,7 @@ export async function updateExhaustion(actorEntity) {
 				game.cub.addCondition(effectNameCustom, [token], { warn: false });
 			}
 		} else {
-			warn(
-				`${game.i18n.localize(
-					"The module 'CUB' is not active, but the module setting 'Auto Exhaustion effects' is enabled"
-				)}`,
-				true
-			);
+			warn(`${game.i18n.localize("The module 'CUB' is not active, but the module setting 'Auto Exhaustion effects' is enabled")}`, true);
 		}
 	}
 }
@@ -284,7 +272,7 @@ Hooks.on(`dnd5e.restComplete`, (actorEntity, data) => {
 		} else if (actor.type === "npc") {
 			let exhaustion = actorEntity.flags[CONSTANTS.MODULE_ID].exhaustion;
 			if (exhaustion > 0) {
-				actor.update({ "flags.tidy5e-sheet.exhaustion": exhaustion - 1 });
+				actor.update({ "flags.foundryvtt-tidy5e-sheet-nolat.exhaustion": exhaustion - 1 });
 			}
 		} else {
 			warn(`Long rest is not supported for actor ype '${actor.type}'`);
@@ -294,10 +282,7 @@ Hooks.on(`dnd5e.restComplete`, (actorEntity, data) => {
 
 // set exhaustion value to dfred/cub effect level
 Hooks.on(`createActiveEffect`, (effect, data, id) => {
-	if (
-		game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") == "dfredce" ||
-		game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") == "cub"
-	) {
+	if (game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") == "dfredce" || game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") == "cub") {
 		let actor = game.actors.get(effect.parent._id);
 		let effectName = effect.label;
 		if (effectName.includes(game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectCustom"))) {
@@ -312,7 +297,7 @@ Hooks.on(`createActiveEffect`, (effect, data, id) => {
 				let exhaustion = effectName.slice(-1);
 				if (actor.flags[CONSTANTS.MODULE_ID].exhaustion != exhaustion) {
 					debug("tidy5e-exhaustion | createActiveEffect | exhaustion = " + exhaustion);
-					actor.update({ "flags.tidy5e-sheet.exhaustion": exhaustion });
+					actor.update({ "flags.foundryvtt-tidy5e-sheet-nolat.exhaustion": exhaustion });
 				}
 			} else {
 				warn(`createActiveEffect is not supported for actor ype '${actor.type}'`);
@@ -323,10 +308,7 @@ Hooks.on(`createActiveEffect`, (effect, data, id) => {
 
 // reset exhaustion value when dfred/cub effect is removed
 Hooks.on(`deleteActiveEffect`, (effect, data, id) => {
-	if (
-		game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") == "dfredce" ||
-		game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") == "cub"
-	) {
+	if (game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") == "dfredce" || game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") == "cub") {
 		const actor = game.actors.get(effect.parent._id);
 		const effectName = game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectCustom");
 		const levels = game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectCustomTiers");
@@ -361,7 +343,7 @@ Hooks.on(`deleteActiveEffect`, (effect, data, id) => {
 				}
 			} else if (actor.type === "npc") {
 				if (actor.flags.tidy5e - sheet.exhaustion != 0) {
-					actor.update({ "flags.tidy5e-sheet.exhaustion": 0 });
+					actor.update({ "flags.foundryvtt-tidy5e-sheet-nolat.exhaustion": 0 });
 				}
 			} else {
 				warn(`deleteActiveEffect is not supported for actor ype '${actor.type}'`);

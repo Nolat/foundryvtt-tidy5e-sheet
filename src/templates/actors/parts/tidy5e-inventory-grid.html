@@ -1,5 +1,5 @@
 {{!-- Inventory Header --}}
-{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory-header.html"}}
+{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-inventory-header.html"}}
 
 <div class="grid-layout">
   <ul class="inventory-list items-list">
@@ -16,7 +16,7 @@
             <i class="fas fa-sun icon-attuned {{item.attunement.cls}}" title="{{localize item.attunement.title}}"></i>
           {{/if}}
 
-          {{#if item.flags.tidy5e-sheet.favorite}}
+          {{#if item.flags.foundryvtt-tidy5e-sheet-nolat.favorite}}
           <i class="fas fa-bookmark icon-fav" title="{{localize 'TIDY5E.isFav'}}"></i>
           {{/if}}
 
@@ -88,4 +88,4 @@
 </div>
 
 {{!-- Inventory Footer --}}
-{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory-footer.html"}}
+{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-inventory-footer.html"}}

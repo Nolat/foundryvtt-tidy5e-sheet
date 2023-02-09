@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-	<div class="tidy5e-sheet tidy5e-vehicle {{#if actor.flags.tidy5e-sheet.allow-edit}}allow-edit{{/if}}">
+	<div class="foundryvtt-tidy5e-sheet-nolat tidy5e-vehicle {{#if actor.flags.foundryvtt-tidy5e-sheet-nolat.allow-edit}}allow-edit{{/if}}">
 		{{!-- Item Info Card --}}
 		<section id="item-info-container">
 			<div class="info-wrap">
@@ -147,9 +147,9 @@
 					{{#if owner}}
 					<li class="origin-summary-config">
 						<span>
-                        <a class="config-button origin-summary-tidy" data-tooltip="{{localize 'TIDY5E.OriginSummaryConfig'}}">
-                            <i class="fas fa-cog"></i>
-                        </a>
+							<a class="config-button origin-summary-tidy" data-tooltip="{{localize 'TIDY5E.OriginSummaryConfig'}}">
+								<i class="fas fa-cog"></i>
+							</a>
 						</span>
 					</li>
 					{{/if}}
@@ -184,7 +184,9 @@
 								/>
 							</svg>
 							<div class="attribute-value attributable" data-property="attributes.ac">
-								<a class="config-button" data-action="armor" data-attribution="attributes.ac" data-attribution-caption="DND5E.ArmorClass" data-tooltip-direction="DOWN">{{numberInput system.attributes.ac.flat name="system.attributes.ac.flat" min=0 step=1 placeholder="10"}}</a>
+								<a class="config-button" data-action="armor" data-attribution="attributes.ac" data-attribution-caption="DND5E.ArmorClass" data-tooltip-direction="DOWN">
+									{{numberInput system.attributes.ac.flat name="system.attributes.ac.flat" min=0 step=1 placeholder="10"}}
+								</a>
 							</div>
 							<footer class="value-footer">
 								<input type="text" name="system.attributes.ac.motionless"
@@ -266,16 +268,16 @@
 						</div>
 					</div>
 
-					{{!-- Traits --}} {{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-traits.html"}}
+					{{!-- Traits --}} {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-traits.html"}}
 				</div>
 
-				<section class="center-pane">{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}</section>
+				<section class="center-pane">{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-features.html" sections=features}}</section>
 			</div>
 
 			{{!-- Features Tab --}}
-			<div class="tab features" data-group="primary" data-tab="features">{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}</div>
+			<div class="tab features" data-group="primary" data-tab="features">{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-features.html" sections=features}}</div>
 
-			<div class="tab cargo" data-group="primary" data-tab="cargo">{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory.html" sections=cargo}}</div>
+			<div class="tab cargo" data-group="primary" data-tab="cargo">{{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-inventory.html" sections=cargo}}</div>
 
 			<div class="tab biography" data-group="primary" data-tab="biography">
 				<div class="right-notes note-entries">

@@ -1,8 +1,8 @@
 # Tidy5e Sheet
 
-![GitHub issues](https://img.shields.io/github/issues-raw/sdenec/tidy5e-sheet?style=for-the-badge) ![Latest Release Download Count](https://img.shields.io/github/downloads/sdenec/tidy5e-sheet/latest/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge) [![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Ftidy5e-sheet&colorB=006400&style=for-the-badge)](https://forge-vtt.com/bazaar#package=tidy5e-sheet) ![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsdenec%2Ftidy5e-sheet%2Fmaster%2Fmodule.json&label=Foundry%20Version&query=$.compatibility.verified&colorB=orange&style=for-the-badge) ![Latest Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsdenec%2Ftidy5e-sheet%2Fmaster%2Fmodule.json&label=Latest%20Release&prefix=v&query=$.version&colorB=red&style=for-the-badge) [![Foundry Hub Endorsements](https://img.shields.io/endpoint?logoColor=white&url=https%3A%2F%2Fwww.foundryvtt-hub.com%2Fwp-json%2Fhubapi%2Fv1%2Fpackage%2Ftidy5e-sheet%2Fshield%2Fendorsements&style=for-the-badge)](https://www.foundryvtt-hub.com/package/tidy5e-sheet/) ![GitHub all releases](https://img.shields.io/github/downloads/sdenec/tidy5e-sheet/total?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues-raw/sdenec/foundryvtt-tidy5e-sheet-nolat?style=for-the-badge) ![Latest Release Download Count](https://img.shields.io/github/downloads/sdenec/foundryvtt-tidy5e-sheet-nolat/latest/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge) [![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Ftidy5e-sheet&colorB=006400&style=for-the-badge)](https://forge-vtt.com/bazaar#package=foundryvtt-tidy5e-sheet-nolat) ![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsdenec%2Ftidy5e-sheet%2Fmaster%2Fmodule.json&label=Foundry%20Version&query=$.compatibility.verified&colorB=orange&style=for-the-badge) ![Latest Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsdenec%2Ftidy5e-sheet%2Fmaster%2Fmodule.json&label=Latest%20Release&prefix=v&query=$.version&colorB=red&style=for-the-badge) [![Foundry Hub Endorsements](https://img.shields.io/endpoint?logoColor=white&url=https%3A%2F%2Fwww.foundryvtt-hub.com%2Fwp-json%2Fhubapi%2Fv1%2Fpackage%2Ftidy5e-sheet%2Fshield%2Fendorsements&style=for-the-badge)](https://www.foundryvtt-hub.com/package/foundryvtt-tidy5e-sheet-nolat/) ![GitHub all releases](https://img.shields.io/github/downloads/sdenec/foundryvtt-tidy5e-sheet-nolat/total?style=for-the-badge)
 
-[![Translation status](https://weblate.foundryvtt-hub.com/widgets/tidy5e-sheet/-/287x66-black.png)](https://weblate.foundryvtt-hub.com/engage/tidy5e-sheet/)
+[![Translation status](https://weblate.foundryvtt-hub.com/widgets/foundryvtt-tidy5e-sheet-nolat/-/287x66-black.png)](https://weblate.foundryvtt-hub.com/engage/foundryvtt-tidy5e-sheet-nolat/)
 
 An alternative Character Sheet for Foundry VTT dnd5e aimed at creating a cleaner UI, and many many many other features
 
@@ -11,10 +11,11 @@ An alternative Character Sheet for Foundry VTT dnd5e aimed at creating a cleaner
 It's always better and easier to install modules through in in app browser.
 
 To install this module manually:
+
 1. Inside the Foundry "Configuration and Setup" screen, click "Add-on Modules"
 2. Click "Install Module"
 3. In the "Manifest URL" field, paste the following url:
-`https://raw.githubusercontent.com/sdenec/tidy5e-sheet/master/src/module.json`
+   `https://raw.githubusercontent.com/sdenec/foundryvtt-tidy5e-sheet-nolat/master/src/module.json`
 4. Click 'Install' and wait for installation to complete
 5. Don't forget to enable the module in game using the "Manage Module" button
 
@@ -29,13 +30,13 @@ This module uses the [colorsettings](https://github.com/ardittristan/VTTColorSet
 ## Macro to prepare migration from 2.0.3 to 2.1.X
 
 ```
-// IMPORTANT NOTES: 
+// IMPORTANT NOTES:
 // 1) THIS MACRO MUST BE LAUNCHED IN A 2.0.3 WORLDS IF YOU DON'T HAVE A BACKUP SADLY YOU LOST THE JOURNAL DATA
 // 2) THIS MACRO MUST NOT BE LAUNCHED IN A 2.1.X WORLD
 // 3) BEFORE LAUNCH THIS MACRO DO A BACKUP OF THE CURRENT WORLD JUST TO BE SAFE
 // Ty to @zhell for the macro
 const updates = game.actors.reduce((acc, a) => {
-    const flags = foundry.utils.getProperty(a, "flags.tidy5e-sheet") ?? {};
+    const flags = foundry.utils.getProperty(a, "flags.foundryvtt-tidy5e-sheet-nolat") ?? {};
     const asd = a.system.details ?? {};
     const upd = {};
     const props = {
@@ -54,7 +55,7 @@ const updates = game.actors.reduce((acc, a) => {
     }
     acc.push({
         _id: a.id,
-        "flags.tidy5e-sheet": upd
+        "flags.foundryvtt-tidy5e-sheet-nolat": upd
     });
     return acc;
 }, []);
@@ -112,11 +113,9 @@ To enable this behavior enable it in the module's settings. This setting is disa
 
 Note: This feature does not change any data or other behaviors. The spell's icon will still be what is displayed in chat and in other sections of the sheet.
 
-
 ### Feature: All your favorite items are synced between modules
 
 The favorite system is syncronized with the module [Character Sheet Favorites](https://gitlab.com/mxzf/favorite-items) and [Favorite tab](https://github.com/syl3r86/favtab)
-
 
 ### Feature: Lazy Money/Hp/Experience
 
@@ -130,10 +129,10 @@ In the PC inventory you'll find the new attunement tracker at the bottom left. B
 
 ### Feature: Exhaustion, Death Save and Rest on NPC
 
-An 'integration more from flavor than from system functionality, a very "crude" integration of Exhaustion, Death Save and Rest (both Short and Long)  is been applied on the NPC sheet
-
+An 'integration more from flavor than from system functionality, a very "crude" integration of Exhaustion, Death Save and Rest (both Short and Long) is been applied on the NPC sheet
 
 ## Settings
+
 there are plenty of settings from dark mode to round/square portraits, health visualization and user specific options.
 I tried to make each settings description as clear as possible so you should be able to carefully read an pick what you want.
 
@@ -152,27 +151,26 @@ Thank you very much!
 
 ## Issues
 
-Any issues, bugs, or feature requests are always welcome to be reported directly to the [Issue Tracker](https://github.com/p4535992/environment-interactionenvironment-interaction-multisystem/issues ), or using the [Bug Reporter Module](https://foundryvtt.com/packages/bug-reporter/).
+Any issues, bugs, or feature requests are always welcome to be reported directly to the [Issue Tracker](https://github.com/p4535992/environment-interactionenvironment-interaction-multisystem/issues), or using the [Bug Reporter Module](https://foundryvtt.com/packages/bug-reporter/).
 
 ## License
 
-- **[Lazy Money](https://github.com/p4535992/foundryvtt-lazymoney-dnd5e)** : [MIT](https://github.com/p4535992/foundryvtt-lazymoney-dnd5e/blob/master/LICENSE)
-- **[Multiclass Spellbook filter for 5e](https://github.com/MrEnigmamgine/spell-class-filter-for-5e)** : [MIT](https://github.com/thatlonelybugbear/spell-class-filter-for-5e/blob/main/LICENSE)
-- **[Multiclass Spellbook filter for 5e (fork)](https://github.com/thatlonelybugbear/spell-class-filter-for-5e)** : [MIT](https://github.com/thatlonelybugbear/spell-class-filter-for-5e/blob/main/LICENSE)
-- **[Spell Level Buttons for DnD 5e](https://github.com/Rayuaz/spell-level-buttons-for-dnd5e)** : [MIT](https://github.com/Rayuaz/spell-level-buttons-for-dnd5e/blob/master/LICENSE)
-- **[Character Sheet Favorites](https://gitlab.com/mxzf/favorite-items)**: [MIT](https://gitlab.com/mxzf/favorite-items/-/blob/master/LICENSE)
-- **[Character Actions 5e](https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions)**: [MIT](https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions/blob/main/LICENSE)
-- **[Character Actions 5e (fork)](https://github.com/p4535992/foundryvtt-character-actions-dnd5e)** : [MIT](https://github.com/p4535992/foundryvtt-character-actions-dnd5e/blob/master/LICENSE)
+-   **[Lazy Money](https://github.com/p4535992/foundryvtt-lazymoney-dnd5e)** : [MIT](https://github.com/p4535992/foundryvtt-lazymoney-dnd5e/blob/master/LICENSE)
+-   **[Multiclass Spellbook filter for 5e](https://github.com/MrEnigmamgine/spell-class-filter-for-5e)** : [MIT](https://github.com/thatlonelybugbear/spell-class-filter-for-5e/blob/main/LICENSE)
+-   **[Multiclass Spellbook filter for 5e (fork)](https://github.com/thatlonelybugbear/spell-class-filter-for-5e)** : [MIT](https://github.com/thatlonelybugbear/spell-class-filter-for-5e/blob/main/LICENSE)
+-   **[Spell Level Buttons for DnD 5e](https://github.com/Rayuaz/spell-level-buttons-for-dnd5e)** : [MIT](https://github.com/Rayuaz/spell-level-buttons-for-dnd5e/blob/master/LICENSE)
+-   **[Character Sheet Favorites](https://gitlab.com/mxzf/favorite-items)**: [MIT](https://gitlab.com/mxzf/favorite-items/-/blob/master/LICENSE)
+-   **[Character Actions 5e](https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions)**: [MIT](https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions/blob/main/LICENSE)
+-   **[Character Actions 5e (fork)](https://github.com/p4535992/foundryvtt-character-actions-dnd5e)** : [MIT](https://github.com/p4535992/foundryvtt-character-actions-dnd5e/blob/master/LICENSE)
 
 This package, written by sdenec, is under an [Creative Commons Attribution 4.0 International License](LICENSE) and the [Foundry Virtual Tabletop Limited License Agreement for module development](https://foundryvtt.com/article/license/).
 
 ## Credits
 
-- [p4535992](https://github.com/p4535992) for the module [Lazy Money](https://github.com/p4535992/foundryvtt-lazymoney-dnd5e)
-- [MrEnigmamgine](https://github.com/MrEnigmamgine) for the module [Multiclass Spellbook filter for 5e](https://github.com/MrEnigmamgine/spell-class-filter-for-5e)
-- [thatlonelybugbear](https://github.com/thatlonelybugbear) for the module [Multiclass Spellbook filter for 5e (fork)](https://github.com/thatlonelybugbear/spell-class-filter-for-5e)
-- [Rayuaz](https://github.com/Rayuaz) for the module [Spell Level Buttons for DnD 5e](https://github.com/Rayuaz/spell-level-buttons-for-dnd5e)
-- [mxzf](https://gitlab.com/mxzf) for the module [Character Sheet Favorites](https://gitlab.com/mxzf/favorite-items) 
-- [ElfFriend-DnD](https://github.com/ElfFriend-DnD/) for the module [Character Actions 5e](https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions) 
-- [p4535992](https://github.com/p4535992) for the module [Character Actions 5e (fork)](https://github.com/p4535992/foundryvtt-character-actions-dnd5e) 
-
+-   [p4535992](https://github.com/p4535992) for the module [Lazy Money](https://github.com/p4535992/foundryvtt-lazymoney-dnd5e)
+-   [MrEnigmamgine](https://github.com/MrEnigmamgine) for the module [Multiclass Spellbook filter for 5e](https://github.com/MrEnigmamgine/spell-class-filter-for-5e)
+-   [thatlonelybugbear](https://github.com/thatlonelybugbear) for the module [Multiclass Spellbook filter for 5e (fork)](https://github.com/thatlonelybugbear/spell-class-filter-for-5e)
+-   [Rayuaz](https://github.com/Rayuaz) for the module [Spell Level Buttons for DnD 5e](https://github.com/Rayuaz/spell-level-buttons-for-dnd5e)
+-   [mxzf](https://gitlab.com/mxzf) for the module [Character Sheet Favorites](https://gitlab.com/mxzf/favorite-items)
+-   [ElfFriend-DnD](https://github.com/ElfFriend-DnD/) for the module [Character Actions 5e](https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions)
+-   [p4535992](https://github.com/p4535992) for the module [Character Actions 5e (fork)](https://github.com/p4535992/foundryvtt-character-actions-dnd5e)

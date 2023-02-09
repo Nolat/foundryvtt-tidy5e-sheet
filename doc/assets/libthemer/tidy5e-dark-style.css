@@ -51,7 +51,7 @@
 	--t5e-color-hover-bg: rgba(20, 20, 20, 1);
 }
 
-.tidy5e.sheet.actor .tidy5e-sheet {
+.tidy5e.sheet.actor .foundryvtt-tidy5e-sheet-nolat {
 	background-color: var(--t5e-background);
 }
 .tidy5e.sheet.actor .spellcasting-ability {

@@ -121,7 +121,7 @@
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
-.tidy5e.sheet.actor .tidy5e-sheet {
+.tidy5e.sheet.actor .foundryvtt-tidy5e-sheet-nolat {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -135,7 +135,7 @@
 	height: 100%;
 	overflow: hidden;
 }
-.tidy5e.sheet.actor .tidy5e-sheet .notice {
+.tidy5e.sheet.actor .foundryvtt-tidy5e-sheet-nolat .notice {
 	display: block;
 	background: var(--t5e-warning-accent);
 	padding: 10px;
@@ -409,12 +409,7 @@
 }
 .tidy5e.sheet.actor #item-info-container-content .info-card.alwaysprepared {
 	background: var(--t5e-alwaysprepared);
-	background: linear-gradient(
-		180deg,
-		var(--t5e-alwaysprepared) 0px,
-		var(--t5e-alwaysprepared) 26px,
-		rgba(0, 0, 0, 0) 36px
-	);
+	background: linear-gradient(180deg, var(--t5e-alwaysprepared) 0px, var(--t5e-alwaysprepared) 26px, rgba(0, 0, 0, 0) 36px);
 }
 .tidy5e.sheet.actor #item-info-container-content .info-card.magic-item {
 	-webkit-box-shadow: 0 0 6px 2px var(--t5e-magic-accent) inset;
@@ -1119,9 +1114,7 @@
 .tidy5e.sheet.actor .exhaustion-container.level-4 .exhaustion-icon i:nth-child(5) {
 	display: inline-block;
 }
-.tidy5e.sheet.actor
-	.exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3):not(.level-4)
-	.exhaustion-icon,
+.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3):not(.level-4) .exhaustion-icon,
 .tidy5e.sheet.actor .exhaustion-container.level-5 .exhaust-level li:nth-of-type(-n + 6),
 .tidy5e.sheet.actor .exhaustion-container.level-6 .exhaust-level li:nth-of-type(-n + 7) {
 	background: var(--t5e-exhaustion-lvl3);
@@ -1139,9 +1132,7 @@
 .tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2) .level-display {
 	background: var(--t5e-exhaustion-lvl2);
 }
-.tidy5e.sheet.actor
-	.exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3):not(.level-4)
-	.level-display {
+.tidy5e.sheet.actor .exhaustion-container:not(.level-):not(.level-0):not(.level-1):not(.level-2):not(.level-3):not(.level-4) .level-display {
 	background: var(--t5e-exhaustion-lvl3);
 }
 .tidy5e.sheet.actor .portrait-hd {
@@ -1691,7 +1682,7 @@
 	/* font-size: 45px;
 	height: 40px; */
 	font-size: 35px;
-    height: 25px;
+	height: 25px;
 	font-weight: 700;
 	margin: 0 auto;
 	width: 44px;
@@ -2030,8 +2021,8 @@
 	display: none;
 }
 .tidy5e.sheet.actor .allow-edit .items-header-controls {
-	min-width: 120px!important;
-	max-width: 120px!important;
+	min-width: 120px !important;
+	max-width: 120px !important;
 }
 .tidy5e.sheet.actor .allow-edit .list-layout .items-list .item .item-controls:not(#context-menu) {
 	min-width: 120px!important;
@@ -3018,7 +3009,7 @@
 }
 .tidy5e.sheet.actor .items-list .items-header-labels .items-header-controls {
 	min-width: 85px;
-    max-width: 120px;
+	max-width: 120px;
 }
 .tidy5e.sheet.actor .items-list .items-header-labels .items-header-subclass,
 .tidy5e.sheet.actor .items-list .items-header-labels .items-header-source {
@@ -3074,10 +3065,7 @@
 	width: 23px;
 	height: 100%;
 }
-.tidy5e.sheet.actor
-	.items-list
-	.item:not(:hover):not(.quantityAlwaysShownEnabled)
-	.item-quantity:not(.isStack):not(:hover):not(:focus-within) {
+.tidy5e.sheet.actor .items-list .item:not(:hover):not(.quantityAlwaysShownEnabled) .item-quantity:not(.isStack):not(:hover):not(:focus-within) {
 	opacity: 0;
 }
 .tidy5e.sheet.actor .items-list .item.equipped {
@@ -3923,10 +3911,8 @@
 }
 .tidy5e.sheet.actor .grid-layout .item-list .item.magic-item.equipped .item-image {
 	background-image: url("systems/dnd5e/icons/items/inventory/pearl.jpg");
-	-webkit-box-shadow: 0 0 0px 1px var(--t5e-magic-outline) inset, 0 0 0 1px var(--t5e-magic-accent) inset,
-		0 0 3px 2px var(--t5e-magic-accent) inset;
-	box-shadow: 0 0 0px 1px var(--t5e-magic-outline) inset, 0 0 0 1px var(--t5e-magic-accent) inset,
-		0 0 3px 2px var(--t5e-magic-accent) inset;
+	-webkit-box-shadow: 0 0 0px 1px var(--t5e-magic-outline) inset, 0 0 0 1px var(--t5e-magic-accent) inset, 0 0 3px 2px var(--t5e-magic-accent) inset;
+	box-shadow: 0 0 0px 1px var(--t5e-magic-outline) inset, 0 0 0 1px var(--t5e-magic-accent) inset, 0 0 3px 2px var(--t5e-magic-accent) inset;
 	border: none;
 }
 .tidy5e.sheet.actor .grid-layout .item-list .item .item-name {
@@ -6360,13 +6346,7 @@ form .form-group.spell-lvl-btn .form-fields .spell-lvl-btn__label .available-slo
 	height: 24px;
 }
 .tidy5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .item select,
-.tidy5e.sheet.item
-	.sheet-body
-	.tab.magic-items
-	.magic-items-content
-	.magic-item-list
-	.item
-	input:not([type="checkbox"]) {
+.tidy5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .item input:not([type="checkbox"]) {
 	line-height: 20px;
 	height: 20px;
 	background: rgba(255, 255, 255, 0.3);

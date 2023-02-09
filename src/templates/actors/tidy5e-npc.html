@@ -1,5 +1,5 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
-  <div class="tidy5e-sheet tidy5e-npc {{#if actor.flags.tidy5e-sheet.allow-edit}}allow-edit{{/if}}">
+  <div class="foundryvtt-tidy5e-sheet-nolat tidy5e-npc {{#if actor.flags.foundryvtt-tidy5e-sheet-nolat.allow-edit}}allow-edit{{/if}}">
 
 		{{!-- Item Info Card --}}
 		<section id="item-info-container">
@@ -27,14 +27,14 @@
             <div class="death-saves">
                 <div class="counter-value">
                     <i class="fas fa-check"></i>
-                    <input type="text" name="flags.tidy5e-sheet.death.success" data-dtype="Number" placeholder="0"
-                    value="{{actor.flags.tidy5e-sheet.death.success}}" maxlength="1" data-tooltip="{{ localize 'DND5E.DeathSave' }}">
+                    <input type="text" name="flags.foundryvtt-tidy5e-sheet-nolat.death.success" data-dtype="Number" placeholder="0"
+                    value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.death.success}}" maxlength="1" data-tooltip="{{ localize 'DND5E.DeathSave' }}">
                     <div class="death-save rollable has-note death-save-tidy">  <!-- data-action="rollDeathSave" -->
                         <!-- <div class="note">{{ localize "DND5E.DeathSave" }}</div> -->
                         <i class="fas fa-skull"></i>
                     </div>
-                    <input type="text" name="flags.tidy5e-sheet.death.failure" data-dtype="Number" placeholder="0"
-                    value="{{actor.flags.tidy5e-sheet.death.failure}}" maxlength="1">
+                    <input type="text" name="flags.foundryvtt-tidy5e-sheet-nolat.death.failure" data-dtype="Number" placeholder="0"
+                    value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.death.failure}}" maxlength="1">
                     <i class="fas fa-times"></i>
                 </div>
             </div>
@@ -60,8 +60,8 @@
           </div>
 
           {{!-- Exhaustion --}}
-          <div class="exhaustion-container level-{{actor.flags.tidy5e-sheet.exhaustion}} has-note" data-tooltip="{{ @root.exhaustionTooltip }}">
-              <div class="level-display">{{actor.flags.tidy5e-sheet.exhaustion}}</div>
+          <div class="exhaustion-container level-{{actor.flags.foundryvtt-tidy5e-sheet-nolat.exhaustion}} has-note" data-tooltip="{{ @root.exhaustionTooltip }}">
+              <div class="level-display">{{actor.flags.foundryvtt-tidy5e-sheet-nolat.exhaustion}}</div>
               <div class="exhaustion-wrap">
                   <div class="exhaustion-icon">
                       <i class="far fa-grin"></i>
@@ -295,7 +295,7 @@
 
         <div class="left-pane">
           {{!-- Skills --}}
-          <ul class="skills-list {{#if actor.flags.tidy5e-sheet.npcSkillsExpanded}}expanded{{/if}} {{#if actor.flags.tidy5e-sheet.npcSkillsAlwaysVisible}}.always-visible{{/if}}">
+          <ul class="skills-list {{#if actor.flags.foundryvtt-tidy5e-sheet-nolat.npcSkillsExpanded}}expanded{{/if}} {{#if actor.flags.foundryvtt-tidy5e-sheet-nolat.npcSkillsAlwaysVisible}}.always-visible{{/if}}">
             {{#each config.skills as |obj s|}}
             {{#with (lookup ../skills s) as |skill|}}
             <li class="skill {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
@@ -314,7 +314,7 @@
             <li class="toggle-proficient" data-show-skills="{{ localize 'TIDY5E.Show' }}" data-hide-skills="{{ localize 'TIDY5E.Hide' }}"> {{ localize "DND5E.NotProficient" }}</li>
           </ul>
           {{!-- Traits --}}
-          {{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-traits.html"}}
+          {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-traits.html"}}
         </div>
 
         <section class="center-pane">
@@ -359,7 +359,7 @@
           {{!-- Alternative Trait Position --}}
 					<div class="alt-trait-pos"></div>
 
-          {{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}
+          {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-features.html" sections=features}}
 
           <div class="inventory-currency">
             <ol class="currency">
@@ -394,7 +394,7 @@
             </ol>
           </div>
           {{#if @root/hideSpellbookTabNpc}}
-          {{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-npc-spellbook.html"}}
+          {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-npc-spellbook.html"}}
           {{/if}}
         </section>
 
@@ -405,14 +405,14 @@
 			{{!-- Spellbook Tab --}}
       {{!-- TODO add grid support ? --}}
 			<div class="tab spellbook" data-group="primary" data-tab="spellbook">
-        {{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook.html"}}
+        {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-spellbook.html"}}
 			</div>
 
       {{/unless}}
 
       {{!-- Effects Tab --}}
       <div class="tab effects" data-group="primary" data-tab="effects">
-        {{>  "modules/tidy5e-sheet/templates/actors/parts/tidy5e-effects.html"}}
+        {{>  "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-effects.html"}}
       </div>
 
       {{!-- Biography Tab --}}
@@ -420,33 +420,33 @@
         <div class="top-notes note-entries">
 					<article>
 						<ul class="character-details">
-							<li><span>{{ localize "TIDY5E.Gender" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-gender" data-maxlength="40">{{actor.flags.tidy5e-sheet.gender}}</span><input data-input="{{actor._id}}-gender" type="hidden" name="flags.tidy5e-sheet.gender" value="{{actor.flags.tidy5e-sheet.gender}}"></li>
-              <li><span>{{ localize "TIDY5E.Age" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-age" data-maxlength="5">{{actor.flags.tidy5e-sheet.age}}</span><input data-input="{{actor._id}}-age" type="hidden" name="flags.tidy5e-sheet.age" value="{{actor.flags.tidy5e-sheet.age}}"></li>
-              <li><span>{{ localize "TIDY5E.Height" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-height" data-maxlength="20">{{actor.flags.tidy5e-sheet.height}}</span><input data-input="{{actor._id}}-height" type="hidden" name="flags.tidy5e-sheet.height" value="{{actor.flags.tidy5e-sheet.height}}"></li>
-              <li><span>{{ localize "TIDY5E.Weight" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-weight" data-maxlength="20">{{actor.flags.tidy5e-sheet.weight}}</span><input data-input="{{actor._id}}-weight" type="hidden" name="flags.tidy5e-sheet.weight" value="{{actor.flags.tidy5e-sheet.weight}}"></li>
-              <li><span>{{ localize "TIDY5E.Eyes" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-eyes" data-maxlength="40">{{actor.flags.tidy5e-sheet.eyes}}</span><input data-input="{{actor._id}}-eyes" type="hidden" name="flags.tidy5e-sheet.eyes" value="{{actor.flags.tidy5e-sheet.eyes}}"></li>
-              <li><span>{{ localize "TIDY5E.Skin" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-skin" data-maxlength="40">{{actor.flags.tidy5e-sheet.skin}}</span><input data-input="{{actor._id}}-skin" type="hidden" name="flags.tidy5e-sheet.skin" value="{{actor.flags.tidy5e-sheet.skin}}"></li>
-              <li><span>{{ localize "TIDY5E.Hair" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-hair" data-maxlength="40">{{actor.flags.tidy5e-sheet.hair}}</span><input data-input="{{actor._id}}-hair" type="hidden" name="flags.tidy5e-sheet.hair" value="{{actor.flags.tidy5e-sheet.hair}}"></li>
+							<li><span>{{ localize "TIDY5E.Gender" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-gender" data-maxlength="40">{{actor.flags.foundryvtt-tidy5e-sheet-nolat.gender}}</span><input data-input="{{actor._id}}-gender" type="hidden" name="flags.foundryvtt-tidy5e-sheet-nolat.gender" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.gender}}"></li>
+              <li><span>{{ localize "TIDY5E.Age" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-age" data-maxlength="5">{{actor.flags.foundryvtt-tidy5e-sheet-nolat.age}}</span><input data-input="{{actor._id}}-age" type="hidden" name="flags.foundryvtt-tidy5e-sheet-nolat.age" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.age}}"></li>
+              <li><span>{{ localize "TIDY5E.Height" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-height" data-maxlength="20">{{actor.flags.foundryvtt-tidy5e-sheet-nolat.height}}</span><input data-input="{{actor._id}}-height" type="hidden" name="flags.foundryvtt-tidy5e-sheet-nolat.height" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.height}}"></li>
+              <li><span>{{ localize "TIDY5E.Weight" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-weight" data-maxlength="20">{{actor.flags.foundryvtt-tidy5e-sheet-nolat.weight}}</span><input data-input="{{actor._id}}-weight" type="hidden" name="flags.foundryvtt-tidy5e-sheet-nolat.weight" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.weight}}"></li>
+              <li><span>{{ localize "TIDY5E.Eyes" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-eyes" data-maxlength="40">{{actor.flags.foundryvtt-tidy5e-sheet-nolat.eyes}}</span><input data-input="{{actor._id}}-eyes" type="hidden" name="flags.foundryvtt-tidy5e-sheet-nolat.eyes" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.eyes}}"></li>
+              <li><span>{{ localize "TIDY5E.Skin" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-skin" data-maxlength="40">{{actor.flags.foundryvtt-tidy5e-sheet-nolat.skin}}</span><input data-input="{{actor._id}}-skin" type="hidden" name="flags.foundryvtt-tidy5e-sheet-nolat.skin" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.skin}}"></li>
+              <li><span>{{ localize "TIDY5E.Hair" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-hair" data-maxlength="40">{{actor.flags.foundryvtt-tidy5e-sheet-nolat.hair}}</span><input data-input="{{actor._id}}-hair" type="hidden" name="flags.foundryvtt-tidy5e-sheet-nolat.hair" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.hair}}"></li>
 						</ul>
 					</article>
 				</div>
-        <div class="toggle-personality-info" title="{{localize 'TIDY5E.TogglePersonalityInfo'}}">{{#if actor.flags.tidy5e-sheet.showNpcPersonalityInfo}}<i class="fas fa-angle-double-left"></i>{{else}}<i class="fas fa-angle-double-right"></i>{{/if}}</div>
+        <div class="toggle-personality-info" title="{{localize 'TIDY5E.TogglePersonalityInfo'}}">{{#if actor.flags.foundryvtt-tidy5e-sheet-nolat.showNpcPersonalityInfo}}<i class="fas fa-angle-double-left"></i>{{else}}<i class="fas fa-angle-double-right"></i>{{/if}}</div>
         <div class="left-notes note-entries hidden">
           <article>
 					<div class="section-titles biopage">{{ localize "DND5E.PersonalityTraits" }}</div>
-						{{editor actor.flags.tidy5e-sheet.trait target="flags.tidy5e-sheet.trait" button=true editable=editable engine="prosemirror" collaborate=false}}
+						{{editor actor.flags.foundryvtt-tidy5e-sheet-nolat.trait target="flags.foundryvtt-tidy5e-sheet-nolat.trait" button=true editable=editable engine="prosemirror" collaborate=false}}
 					</article>
 					<article>
 						<div class="section-titles biopage">{{ localize "DND5E.Ideals" }}</div>
-						{{editor actor.flags.tidy5e-sheet.ideal target="flags.tidy5e-sheet.ideal" button=true editable=editable engine="prosemirror" collaborate=false}}
+						{{editor actor.flags.foundryvtt-tidy5e-sheet-nolat.ideal target="flags.foundryvtt-tidy5e-sheet-nolat.ideal" button=true editable=editable engine="prosemirror" collaborate=false}}
 					</article>
 					<article>
 						<div class="section-titles biopage">{{ localize "DND5E.Bonds" }}</div>
-						{{editor actor.flags.tidy5e-sheet.bond target="flags.tidy5e-sheet.bond" button=true editable=editable engine="prosemirror" collaborate=false}}
+						{{editor actor.flags.foundryvtt-tidy5e-sheet-nolat.bond target="flags.foundryvtt-tidy5e-sheet-nolat.bond" button=true editable=editable engine="prosemirror" collaborate=false}}
 					</article>
 					<article>
 						<div class="section-titles biopage">{{ localize "DND5E.Flaws" }}</div>
-						{{editor actor.flags.tidy5e-sheet.flaw target="flags.tidy5e-sheet.flaw" button=true editable=editable engine="prosemirror" collaborate=false}}
+						{{editor actor.flags.foundryvtt-tidy5e-sheet-nolat.flaw target="flags.foundryvtt-tidy5e-sheet-nolat.flaw" button=true editable=editable engine="prosemirror" collaborate=false}}
 					</article>
         </div>
 
@@ -463,33 +463,33 @@
         <div class="left-notes note-entries">
           <article>
             <div class="section-titles">
-              <input type="text" name="flags.tidy5e-sheet.notes1.name" value="{{actor.flags.tidy5e-sheet.notes1.name}}" placeholder="{{ localize 'TIDY5E.JournalPoi' }}"/>
+              <input type="text" name="flags.foundryvtt-tidy5e-sheet-nolat.notes1.name" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.notes1.name}}" placeholder="{{ localize 'TIDY5E.JournalPoi' }}"/>
             </div>
-            {{editor journalNotes1HTML target="flags.tidy5e-sheet.notes1.value" button=true editable=editable engine="prosemirror" collaborate=false}}
+            {{editor journalNotes1HTML target="flags.foundryvtt-tidy5e-sheet-nolat.notes1.value" button=true editable=editable engine="prosemirror" collaborate=false}}
           </article>
           <article>
             <div class="section-titles">
-              <input type="text" name="flags.tidy5e-sheet.notes2.name" value="{{actor.flags.tidy5e-sheet.notes2.name}}" placeholder="{{ localize 'TIDY5E.JournalLoi' }}"/>
+              <input type="text" name="flags.foundryvtt-tidy5e-sheet-nolat.notes2.name" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.notes2.name}}" placeholder="{{ localize 'TIDY5E.JournalLoi' }}"/>
             </div>
-            {{editor journalNotes2HTML target="flags.tidy5e-sheet.notes2.value" button=true editable=editable engine="prosemirror" collaborate=false}}
+            {{editor journalNotes2HTML target="flags.foundryvtt-tidy5e-sheet-nolat.notes2.value" button=true editable=editable engine="prosemirror" collaborate=false}}
           </article>
           <article>
             <div class="section-titles">
-              <input type="text" name="flags.tidy5e-sheet.notes3.name" value="{{actor.flags.tidy5e-sheet.notes3.name}}" placeholder="{{ localize 'TIDY5E.JournalQuests' }}"/>
+              <input type="text" name="flags.foundryvtt-tidy5e-sheet-nolat.notes3.name" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.notes3.name}}" placeholder="{{ localize 'TIDY5E.JournalQuests' }}"/>
             </div>
-            {{editor journalNotes3HTML target="flags.tidy5e-sheet.notes3.value" button=true editable=editable engine="prosemirror" collaborate=false}}
+            {{editor journalNotes3HTML target="flags.foundryvtt-tidy5e-sheet-nolat.notes3.value" button=true editable=editable engine="prosemirror" collaborate=false}}
           </article>
           <article>
             <div class="section-titles">
-              <input type="text" name="flags.tidy5e-sheet.notes4.name" value="{{actor.flags.tidy5e-sheet.notes4.name}}" placeholder="{{ localize 'TIDY5E.JournalMisc' }}"/>
+              <input type="text" name="flags.foundryvtt-tidy5e-sheet-nolat.notes4.name" value="{{actor.flags.foundryvtt-tidy5e-sheet-nolat.notes4.name}}" placeholder="{{ localize 'TIDY5E.JournalMisc' }}"/>
             </div>
-            {{editor journalNotes4HTML target="flags.tidy5e-sheet.notes4.value" button=true editable=editable engine="prosemirror" collaborate=false}}
+            {{editor journalNotes4HTML target="flags.foundryvtt-tidy5e-sheet-nolat.notes4.value" button=true editable=editable engine="prosemirror" collaborate=false}}
           </article>
         </div>
         <div class="right-notes note-entries">
           <article class="journal-notes">
             <div class="section-titles">{{ localize 'TIDY5E.JournalEntries' }}</div>
-            {{editor journalHTML target="flags.tidy5e-sheet.notes.value" button=true editable=editable engine="prosemirror" collaborate=false}}
+            {{editor journalHTML target="flags.foundryvtt-tidy5e-sheet-nolat.notes.value" button=true editable=editable engine="prosemirror" collaborate=false}}
           </article>
         </div>
       </div>

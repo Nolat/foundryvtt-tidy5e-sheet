@@ -283,7 +283,7 @@
 	},
 	"TIDY5E.Settings.CustomExhaustionIcon": {
 		"name": "Icono de efecto de cansancio personalizado.",
-		"hint": "Establece tu propio icono de efecto de cansancio proporcionando una URL a la imagen. Solo disponible si el Efecto de Cansancio está configurado como \"tidy 5e\" (p. ej.: modules/tidy5e-sheet/images/exhaustion.svg)."
+		"hint": "Establece tu propio icono de efecto de cansancio proporcionando una URL a la imagen. Solo disponible si el Efecto de Cansancio está configurado como \"tidy 5e\" (p. ej.: modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg)."
 	},
 	"TIDY5E.Settings.CustomExhaustionEffect": {
 		"name": "Nombre de efecto de cansandcio de CUB personalizado.",

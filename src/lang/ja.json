@@ -330,7 +330,7 @@
 	},
 	"TIDY5E.Settings.CustomExhaustionIcon": {
 		"name": "カスタム消耗効果アイコン",
-		"hint": "画像のURL（例：modules/tidy5e-sheet/images/exhaustion.svg）を指定して、カスタムされた消耗効果アイコンを設定します。枯渇効果が \"tidy 5e\" に設定されている場合にのみ利用可能です。"
+		"hint": "画像のURL（例：modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg）を指定して、カスタムされた消耗効果アイコンを設定します。枯渇効果が \"tidy 5e\" に設定されている場合にのみ利用可能です。"
 	},
 	"TIDY5E.Settings.CustomExhaustionEffect": {
 		"name": "カスタムCUB消耗効果名",

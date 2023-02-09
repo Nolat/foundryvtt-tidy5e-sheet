@@ -2,9 +2,9 @@
 // THIS METHOD IS DEPRECATED WITH 2.1.X FOR NOW I LEAVE
 // ============================================
 export const tidy5eClassicControls = function (html) {
-	let itemList = html.find(".tidy5e-sheet .list-layout .items-list"),
-		item = html.find(".tidy5e-sheet .list-layout .item"),
-		itemControls = html.find(".tidy5e-sheet .list-layout .item-controls");
+	let itemList = html.find(".foundryvtt-tidy5e-sheet-nolat .list-layout .items-list"),
+		item = html.find(".foundryvtt-tidy5e-sheet-nolat .list-layout .item"),
+		itemControls = html.find(".foundryvtt-tidy5e-sheet-nolat .list-layout .item-controls");
 
 	itemList.addClass("classic-controls");
 	// item.removeClass('context-enabled').removeClass('context');

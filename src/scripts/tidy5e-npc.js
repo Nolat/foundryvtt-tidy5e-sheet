@@ -36,14 +36,8 @@ export default class Tidy5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC 
 	 * @return {Object}
 	 */
 	static get defaultOptions() {
-		let defaultTab =
-			game.settings.get(CONSTANTS.MODULE_ID, "defaultActionsTab") != "default"
-				? game.settings.get(CONSTANTS.MODULE_ID, "defaultActionsTab")
-				: "attributes";
-		if (
-			!game.modules.get("character-actions-list-5e")?.active &&
-			game.settings.get(CONSTANTS.MODULE_ID, "defaultActionsTab") == "actions"
-		) {
+		let defaultTab = game.settings.get(CONSTANTS.MODULE_ID, "defaultActionsTab") != "default" ? game.settings.get(CONSTANTS.MODULE_ID, "defaultActionsTab") : "attributes";
+		if (!game.modules.get("character-actions-list-5e")?.active && game.settings.get(CONSTANTS.MODULE_ID, "defaultActionsTab") == "actions") {
 			defaultTab = "attributes";
 		}
 
@@ -70,8 +64,8 @@ export default class Tidy5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC 
 	 * @type {String}
 	 */
 	get template() {
-		if (!game.user.isGM && this.actor.limited) return "modules/tidy5e-sheet/templates/actors/tidy5e-npc-ltd.html";
-		return "modules/tidy5e-sheet/templates/actors/tidy5e-npc.html";
+		if (!game.user.isGM && this.actor.limited) return "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/tidy5e-npc-ltd.html";
+		return "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/tidy5e-npc.html";
 	}
 
 	/* -------------------------------------------- */
@@ -258,10 +252,7 @@ export default class Tidy5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC 
 		});
 
 		context.appId = this.appId;
-		context.allowCantripToBePreparedOnContext = game.settings.get(
-			CONSTANTS.MODULE_ID,
-			"allowCantripToBePreparedOnContext"
-		);
+		context.allowCantripToBePreparedOnContext = game.settings.get(CONSTANTS.MODULE_ID, "allowCantripToBePreparedOnContext");
 		context.hideSpellbookTabNpc = game.settings.get(CONSTANTS.MODULE_ID, "hideSpellbookTabNpc");
 		context.isGM = game.user.isGM;
 		context.allowHpMaxOverride = game.settings.get(CONSTANTS.MODULE_ID, "allowHpMaxOverride");
@@ -272,34 +263,24 @@ export default class Tidy5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC 
 		context.notHideIconsNextToTheItemName = !game.settings.get(CONSTANTS.MODULE_ID, "hideIconsNextToTheItemName");
 
 		context.hpOverlayCalculationCurrent =
-			(100 /
-				((is_real_number(this.actor.system?.attributes?.hp?.max) ? this.actor.system.attributes.hp.max : 1) +
-					(is_real_number(this.actor.system?.attributes?.hp?.tempmax)
-						? this.actor.system.attributes.hp.tempmax
-						: 0))) *
+			(100 / ((is_real_number(this.actor.system?.attributes?.hp?.max) ? this.actor.system.attributes.hp.max : 1) + (is_real_number(this.actor.system?.attributes?.hp?.tempmax) ? this.actor.system.attributes.hp.tempmax : 0))) *
 				(is_real_number(this.actor.system?.attributes?.hp?.value) ? this.actor.system.attributes.hp.value : 0) +
 			(is_real_number(this.actor.system?.attributes?.hp?.temp) ? this.actor.system.attributes.hp.temp : 0);
 
 		context.hpOverlayCalculationCurrent = context.hpOverlayCalculationCurrent + "%";
 
 		context.hpBarCalculationCurrent =
-			(100 /
-				((is_real_number(this.actor.system?.attributes?.hp?.max) ? this.actor.system.attributes.hp.max : 1) +
-					(is_real_number(this.actor.system?.attributes?.hp?.tempmax)
-						? this.actor.system.attributes.hp.tempmax
-						: 0))) *
+			(100 / ((is_real_number(this.actor.system?.attributes?.hp?.max) ? this.actor.system.attributes.hp.max : 1) + (is_real_number(this.actor.system?.attributes?.hp?.tempmax) ? this.actor.system.attributes.hp.tempmax : 0))) *
 				(is_real_number(this.actor.system?.attributes?.hp?.value) ? this.actor.system.attributes.hp.value : 0) +
 			(is_real_number(this.actor.system?.attributes?.hp?.temp) ? this.actor.system.attributes.hp.temp : 0);
 
 		context.hpBarCalculationCurrent = context.hpBarCalculationCurrent + "%";
 
 		if (!is_real_number(this.actor.flags[CONSTANTS.MODULE_ID]?.exhaustion)) {
-			setProperty(this.actor, `flags.tidy5e-sheet.exhaustion`, 0);
+			setProperty(this.actor, `flags.foundryvtt-tidy5e-sheet-nolat.exhaustion`, 0);
 		}
 
-		const exhaustionTooltipPrefix = `${game.i18n.localize("DND5E.Exhaustion")} ${game.i18n.localize(
-			"DND5E.AbbreviationLevel"
-		)} ${this.actor.flags[CONSTANTS.MODULE_ID].exhaustion}`;
+		const exhaustionTooltipPrefix = `${game.i18n.localize("DND5E.Exhaustion")} ${game.i18n.localize("DND5E.AbbreviationLevel")} ${this.actor.flags[CONSTANTS.MODULE_ID].exhaustion}`;
 		if (this.actor.flags[CONSTANTS.MODULE_ID].exhaustion === 0) {
 			context.exhaustionTooltip = exhaustionTooltipPrefix + `, ${game.i18n.localize("TIDY5E.Exhaustion0")}`;
 		} else if (this.actor.flags[CONSTANTS.MODULE_ID].exhaustion === 1) {
@@ -319,10 +300,10 @@ export default class Tidy5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC 
 		}
 
 		if (!is_real_number(this.actor.flags[CONSTANTS.MODULE_ID]?.death?.success)) {
-			setProperty(this.actor, `flags.tidy5e-sheet.death.success`, 0);
+			setProperty(this.actor, `flags.foundryvtt-tidy5e-sheet-nolat.death.success`, 0);
 		}
 		if (!is_real_number(this.actor.flags[CONSTANTS.MODULE_ID]?.death?.failure)) {
-			setProperty(this.actor, `flags.tidy5e-sheet.death.failure`, 0);
+			setProperty(this.actor, `flags.foundryvtt-tidy5e-sheet-nolat.death.failure`, 0);
 		}
 
 		return context;
@@ -445,9 +426,9 @@ export default class Tidy5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC 
 			event.preventDefault();
 			let target = event.currentTarget;
 			let value = Number(target.dataset.elvl);
-			await actor.update({ "flags.tidy5e-sheet.exhaustion": value });
+			await actor.update({ "flags.foundryvtt-tidy5e-sheet-nolat.exhaustion": value });
 			// TODO strange why i did need this ???
-			setProperty(actor, "flags.tidy5e-sheet.exhaustion", value);
+			setProperty(actor, "flags.foundryvtt-tidy5e-sheet-nolat.exhaustion", value);
 			if (game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") != "default") {
 				if (actor.constructor.name != "Actor5e") {
 					// Only act if we initiated the update ourselves, and the effect is a child of a character
@@ -857,13 +838,13 @@ export default class Tidy5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC 
 			}
 
 			// Increment successes
-			else details.updates = { "flags.tidy5e-sheet.death.success": Math.clamped(successes, 0, 3) };
+			else details.updates = { "flags.foundryvtt-tidy5e-sheet-nolat.death.success": Math.clamped(successes, 0, 3) };
 		}
 
 		// Save failure
 		else {
 			let failures = (death.failure || 0) + (roll.isFumble ? 2 : 1);
-			details.updates = { "flags.tidy5e-sheet.death.failure": Math.clamped(failures, 0, 3) };
+			details.updates = { "flags.foundryvtt-tidy5e-sheet-nolat.death.failure": Math.clamped(failures, 0, 3) };
 			if (failures >= 3) {
 				// 3 Failures = death
 				details.chatString = "DND5E.DeathSaveFailure";
@@ -896,9 +877,7 @@ export default class Tidy5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC 
 		try {
 			if (game.modules.get("character-actions-list-5e")?.active && injectNPCSheet) {
 				// Update the nav menu
-				const actionsTabButton = $(
-					'<a class="item" data-tab="actions">' + game.i18n.localize(`DND5E.ActionPl`) + "</a>"
-				);
+				const actionsTabButton = $('<a class="item" data-tab="actions">' + game.i18n.localize(`DND5E.ActionPl`) + "</a>");
 				const tabs = html.find('.tabs[data-group="primary"]');
 				tabs.prepend(actionsTabButton);
 
@@ -952,12 +931,12 @@ async function checkDeathSaveStatus(app, html, data) {
 			`tidy5e-npc | checkDeathSaveStatus | current HP NPC : ${currentHealth}, success: ${deathSaveSuccess}, failure: ${deathSaveFailure}`
 		);
 		if (currentHealth <= 0) {
-			html.find(".tidy5e-sheet.tidy5e-npc .profile").addClass("dead");
+			html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .profile").addClass("dead");
 		}
 
 		if ((currentHealth > 0 && deathSaveSuccess != 0) || (currentHealth > 0 && deathSaveFailure != 0)) {
-			await actor.update({ "flags.tidy5e-sheet.death.success": 0 });
-			await actor.update({ "flags.tidy5e-sheet.death.failure": 0 });
+			await actor.update({ "flags.foundryvtt-tidy5e-sheet-nolat.death.success": 0 });
+			await actor.update({ "flags.foundryvtt-tidy5e-sheet-nolat.death.failure": 0 });
 		}
 	}
 }
@@ -997,23 +976,23 @@ async function setSheetClasses(app, html, data) {
 	const { token } = app;
 	const actor = app.actor;
 	if (actor.getFlag(CONSTANTS.MODULE_ID, "showNpcPersonalityInfo")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .left-notes").removeClass("hidden");
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .left-notes").removeClass("hidden");
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "journalTabNPCDisabled")) {
-		html.find('.tidy5e-sheet.tidy5e-npc .tidy5e-navigation a[data-tab="journal"]').remove();
+		html.find('.foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .tidy5e-navigation a[data-tab="journal"]').remove();
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "rightClickDisabled")) {
 		if (game.settings.get(CONSTANTS.MODULE_ID, "classicControlsEnabled")) {
-			html.find(".tidy5e-sheet.tidy5e-npc .grid-layout .items-list").addClass("alt-context");
+			html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .grid-layout .items-list").addClass("alt-context");
 		} else {
-			html.find(".tidy5e-sheet.tidy5e-npc .items-list").addClass("alt-context");
+			html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .items-list").addClass("alt-context");
 		}
 	}
 	// if (game.settings.get(CONSTANTS.MODULE_ID, "classicControlsEnabled")) {
 	//   tidy5eClassicControls(html);
 	// }
 	if (!game.settings.get(CONSTANTS.MODULE_ID, "classicControlsEnabled")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .items-header-controls").remove();
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .items-header-controls").remove();
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "traitsMovedBelowResourceNpc")) {
 		let altPos = html.find(".alt-trait-pos");
@@ -1021,19 +1000,16 @@ async function setSheetClasses(app, html, data) {
 		altPos.append(traits);
 	}
 	if (!game.settings.get(CONSTANTS.MODULE_ID, "restingForNpcsEnabled")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .rest-container").remove();
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .rest-container").remove();
 	}
-	if (
-		game.settings.get(CONSTANTS.MODULE_ID, "portraitStyle") == "npc" ||
-		game.settings.get(CONSTANTS.MODULE_ID, "portraitStyle") == "all"
-	) {
-		html.find(".tidy5e-sheet.tidy5e-npc .profile").addClass("roundPortrait");
+	if (game.settings.get(CONSTANTS.MODULE_ID, "portraitStyle") == "npc" || game.settings.get(CONSTANTS.MODULE_ID, "portraitStyle") == "all") {
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .profile").addClass("roundPortrait");
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "hpOverlayDisabledNpc")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .profile").addClass("disable-hp-overlay");
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .profile").addClass("disable-hp-overlay");
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "hpBarDisabled")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .profile").addClass("disable-hp-bar");
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .profile").addClass("disable-hp-bar");
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "hpOverlayBorderNpc") > 0) {
 		$(".system-dnd5e")
@@ -1043,44 +1019,31 @@ async function setSheetClasses(app, html, data) {
 		$(".system-dnd5e").get(0).style.removeProperty("--npc-border");
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "traitsAlwaysShownNpc")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .traits").addClass("always-visible");
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .traits").addClass("always-visible");
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "traitLabelsEnabled")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .traits").addClass("show-labels");
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .traits").addClass("show-labels");
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "skillsAlwaysShownNpc")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .skills-list").addClass("always-visible");
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .skills-list").addClass("always-visible");
 	}
-	if (
-		token &&
-		token.actor.prototypeToken.actorLink &&
-		game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "both"
-	) {
-		html.find(".tidy5e-sheet.tidy5e-npc").addClass("linked");
+	if (token && token.actor.prototypeToken.actorLink && game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "both") {
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc").addClass("linked");
 	}
-	if (
-		token &&
-		!token.actor.prototypeToken.actorLink &&
-		(game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "unlinked" ||
-			game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "both")
-	) {
-		html.find(".tidy5e-sheet.tidy5e-npc").addClass("unlinked");
+	if (token && !token.actor.prototypeToken.actorLink && (game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "unlinked" || game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "both")) {
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc").addClass("unlinked");
 	}
-	if (
-		!token &&
-		(game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "unlinked" ||
-			game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "both")
-	) {
-		html.find(".tidy5e-sheet.tidy5e-npc").addClass("original");
+	if (!token && (game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "unlinked" || game.settings.get(CONSTANTS.MODULE_ID, "linkMarkerNpc") == "both")) {
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc").addClass("original");
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "exhaustionDisabled")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .profile .exhaustion-container").remove();
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .profile .exhaustion-container").remove();
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "exhaustionOnHover")) {
-		html.find(".tidy5e-sheet.tidy5e-npc .profile").addClass("exhaustionOnHover");
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .profile").addClass("exhaustionOnHover");
 	}
 	if (game.settings.get(CONSTANTS.MODULE_ID, "hiddenDeathSavesEnabled") && !game.user.isGM) {
-		html.find(".tidy5e-sheet.tidy5e-npc .death-saves").addClass("gmOnly");
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .death-saves").addClass("gmOnly");
 	}
 
 	$(".info-card-hint .key").html(game.settings.get(CONSTANTS.MODULE_ID, "itemCardsFixKey"));
@@ -1133,11 +1096,7 @@ async function editProtection(app, html, data) {
 
 		let itemContainer = html.find(".inventory-list:not(.spellbook-list).items-list");
 		html.find(".inventory-list:not(.spellbook-list) .items-header").each(function () {
-			if (
-				$(this).next(".item-list").find("li").length -
-					$(this).next(".item-list").find("li.items-footer").length ==
-				0
-			) {
+			if ($(this).next(".item-list").find("li").length - $(this).next(".item-list").find("li.items-footer").length == 0) {
 				$(this).next(".item-list").addClass("hidden").hide();
 				$(this).addClass("hidden").hide();
 			}
@@ -1167,7 +1126,7 @@ async function editProtection(app, html, data) {
 // add fav button for npc-favorites
 async function npcFavorites(app, html, data) {
 	// TODO intgrate favorite mechanism for NPC too ?
-	// Issue https://github.com/sdenec/tidy5e-sheet/issues/539
+	// Issue https://github.com/sdenec/foundryvtt-tidy5e-sheet-nolat/issues/539
 	// for now is beeter use other external module
 	// addFavorites(app, html, data);
 }
@@ -1351,8 +1310,8 @@ Hooks.on("renderTidy5eNPC", (app, html, data) => {
 /** perform some necessary operations on character sheet **/
 Hooks.on("renderActorSheet", (app, html, data) => {
 	// Temporary Patch for module incompatibility with https://github.com/misthero/dnd5e-custom-skills
-	// Issue https://github.com/sdenec/tidy5e-sheet/issues/662
+	// Issue https://github.com/sdenec/foundryvtt-tidy5e-sheet-nolat/issues/662
 	if (game.modules.get("dnd5e-custom-skills")?.active) {
-		html.find(".tidy5e-sheet.tidy5e-npc .ability-scores.custom-abilities").removeClass("custom-abilities");
+		html.find(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .ability-scores.custom-abilities").removeClass("custom-abilities");
 	}
 });

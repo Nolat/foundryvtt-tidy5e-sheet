@@ -66,9 +66,7 @@ export const addFavorites = async function (app, html, data, position) {
 
 	let context = {
 		owner: data.owner,
-		inventory: favs.filter((i) =>
-			["weapon", "equipment", "consumable", "tool", "backpack", "loot"].includes(i.type)
-		),
+		inventory: favs.filter((i) => ["weapon", "equipment", "consumable", "tool", "backpack", "loot"].includes(i.type)),
 		features: favs.filter((i) => ["feat", "background", "class", "subclass"].includes(i.type)),
 		spells: app._prepareSpellbook(
 			{ actor: app.actor },
@@ -175,13 +173,9 @@ export const addFavorites = async function (app, html, data, position) {
 		// add button to toggle favorite of the item in their native tab
 		if (app.options.editable) {
 			let favBtn = $(
-				`<a class="item-control item-fav ${isFav ? "active" : ""}" title="${
-					isFav ? game.i18n.localize("TIDY5E.RemoveFav") : game.i18n.localize("TIDY5E.AddFav")
-				}" data-fav="${isFav}"><i class="${
+				`<a class="item-control item-fav ${isFav ? "active" : ""}" title="${isFav ? game.i18n.localize("TIDY5E.RemoveFav") : game.i18n.localize("TIDY5E.AddFav")}" data-fav="${isFav}"><i class="${
 					isFav ? "fas fa-bookmark" : "fas fa-bookmark inactive"
-				}"></i> <span class="control-label">${
-					isFav ? game.i18n.localize("TIDY5E.RemoveFav") : game.i18n.localize("TIDY5E.AddFav")
-				}</span></a>`
+				}"></i> <span class="control-label">${isFav ? game.i18n.localize("TIDY5E.RemoveFav") : game.i18n.localize("TIDY5E.AddFav")}</span></a>`
 			);
 			favBtn.click((ev) => {
 				const item_id = ev.currentTarget.closest("[data-item-id]").dataset.itemId;
@@ -243,9 +237,7 @@ export const addFavorites = async function (app, html, data, position) {
 			if (item.system.activation && item.system.activation.type) {
 				let key = item.system.activation.type;
 				// item.system.activation.type.capitalize()
-				labels.activation = `${
-					item.system.activation.cost ? item.system.activation.cost + " " : ""
-				}${translateLabels(key)}`;
+				labels.activation = `${item.system.activation.cost ? item.system.activation.cost + " " : ""}${translateLabels(key)}`;
 			}
 
 			// is item chargeable and on Cooldown
@@ -275,10 +267,7 @@ export const addFavorites = async function (app, html, data, position) {
 
 			// check magic item
 			item.isMagic = false;
-			if (
-				(item.flags.magicitems && item.flags.magicitems.enabled) ||
-				(item.system.properties && item.system.properties.mgc)
-			) {
+			if ((item.flags.magicitems && item.flags.magicitems.enabled) || (item.system.properties && item.system.properties.mgc)) {
 				item.isMagic = true;
 			}
 
@@ -363,10 +352,7 @@ export const addFavorites = async function (app, html, data, position) {
 		}
 	}
 
-	let enableSortFavoritesItemsAlphabetically = game.settings.get(
-		CONSTANTS.MODULE_ID,
-		"enableSortFavoritesItemsAlphabetically"
-	);
+	let enableSortFavoritesItemsAlphabetically = game.settings.get(CONSTANTS.MODULE_ID, "enableSortFavoritesItemsAlphabetically");
 
 	if (enableSortFavoritesItemsAlphabetically) {
 		// sorting favItems alphabetically
@@ -534,15 +520,10 @@ export const addFavorites = async function (app, html, data, position) {
 		context.favSpellsPrepMode = spellPrepModeCount > 0 ? favSpellsPrepMode : false;
 		context.favSpells = spellCount > 0 ? favSpells : false;
 		context.editable = app.options.editable;
-		context.allowCantripToBePreparedOnContext = game.settings.get(
-			CONSTANTS.MODULE_ID,
-			"allowCantripToBePreparedOnContext"
-		);
+		context.allowCantripToBePreparedOnContext = game.settings.get(CONSTANTS.MODULE_ID, "allowCantripToBePreparedOnContext");
 
-		await loadTemplates(["modules/tidy5e-sheet/templates/favorites/tidy5e-favorite-item.html"]);
-		let favHtml = $(
-			await renderTemplate("modules/tidy5e-sheet/templates/favorites/tidy5e-favorite-template.html", context)
-		);
+		await loadTemplates(["modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/tidy5e-favorite-item.html"]);
+		let favHtml = $(await renderTemplate("modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/tidy5e-favorite-template.html", context));
 
 		// Activating favorite-list events
 		tidy5eContextMenu(favHtml, app);

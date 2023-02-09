@@ -45,14 +45,10 @@ export const tidy5eSearchFilter = function (html, actor) {
 
 		switch (id) {
 			case "item-search":
-				searchTarget = html.find(
-					".list-layout .inventory-list:not(.spellbook-list):not(.features-list) .item-name, .grid-layout .inventory-list:not(.spellbook-list):not(.features-list) .info-card-name"
-				);
+				searchTarget = html.find(".list-layout .inventory-list:not(.spellbook-list):not(.features-list) .item-name, .grid-layout .inventory-list:not(.spellbook-list):not(.features-list) .info-card-name");
 				break;
 			case "spell-search":
-				searchTarget = html.find(
-					".list-layout .spellbook-list .item-name, .grid-layout .spellbook-list .info-card-name"
-				);
+				searchTarget = html.find(".list-layout .spellbook-list .item-name, .grid-layout .spellbook-list .info-card-name");
 				break;
 			case "feat-search":
 				searchTarget = html.find(".list-layout .features-list .item-name");
@@ -82,10 +78,7 @@ export const tidy5eSearchFilter = function (html, actor) {
 				$(this).closest(".item").addClass("filtered").hide();
 			}
 
-			if (
-				$(this).closest(".item-list").find(".filtered").length + 1 ==
-				$(this).closest(".item-list").children().length
-			) {
+			if ($(this).closest(".item-list").find(".filtered").length + 1 == $(this).closest(".item-list").children().length) {
 				$(this).closest(".item-list").hide();
 				$(this).closest(".item-list").prev(".items-header").hide();
 			} else {
@@ -112,9 +105,9 @@ export const tidy5eSearchFilter = function (html, actor) {
 					break;
 			}
 			// if(id == "item-search"){
-			//   await actor.setFlag('tidy5e-sheet', 'item-search', '');
+			//   await actor.setFlag('foundryvtt-tidy5e-sheet-nolat', 'item-search', '');
 			// } else {
-			//   await actor.setFlag('tidy5e-sheet', 'spell-search', '');
+			//   await actor.setFlag('foundryvtt-tidy5e-sheet-nolat', 'spell-search', '');
 			// }
 		});
 	}

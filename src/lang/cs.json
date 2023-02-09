@@ -283,7 +283,7 @@
 	},
 	"TIDY5E.Settings.CustomExhaustionIcon": {
 		"name": "Vlastní ikona účinku vyčerpání.",
-		"hint": "Nastavte vlastní ikonu účinku vyčerpání poskytnutím url obrázku. Možné pouze pokud jsou Účinky Vyčerpání nastaveny na \"Tidy5e\" (např.: modules/tidy5e-sheet/images/exhaustion.svg)."
+		"hint": "Nastavte vlastní ikonu účinku vyčerpání poskytnutím url obrázku. Možné pouze pokud jsou Účinky Vyčerpání nastaveny na \"Tidy5e\" (např.: modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg)."
 	},
 	"TIDY5E.Settings.CustomExhaustionEffect": {
 		"name": "Jméno vlastního CUB efektu vyčerpání.",

@@ -370,18 +370,18 @@ export function settingsList() {
 		default: "all",
 		onChange: (data) => {
 			if (data == "npc" || data == "all") {
-				$(".tidy5e-sheet.tidy5e-npc .profile").addClass("roundPortrait");
-				$(".tidy5e-sheet.tidy5e-vehicle .profile").addClass("roundPortrait");
+				$(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .profile").addClass("roundPortrait");
+				$(".foundryvtt-tidy5e-sheet-nolat.tidy5e-vehicle .profile").addClass("roundPortrait");
 			}
 			if (data == "pc" || data == "all") {
-				$(".tidy5e-sheet .profile").addClass("roundPortrait");
-				$(".tidy5e-sheet.tidy5e-npc .profile").removeClass("roundPortrait");
-				$(".tidy5e-sheet.tidy5e-vehicle .profile").removeClass("roundPortrait");
+				$(".foundryvtt-tidy5e-sheet-nolat .profile").addClass("roundPortrait");
+				$(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .profile").removeClass("roundPortrait");
+				$(".foundryvtt-tidy5e-sheet-nolat.tidy5e-vehicle .profile").removeClass("roundPortrait");
 			}
 			if (data == "default") {
-				$(".tidy5e-sheet .profile").removeClass("roundPortrait");
-				$(".tidy5e-sheet.tidy5e-npc .profile").removeClass("roundPortrait");
-				$(".tidy5e-sheet.tidy5e-vehicle .profile").removeClass("roundPortrait");
+				$(".foundryvtt-tidy5e-sheet-nolat .profile").removeClass("roundPortrait");
+				$(".foundryvtt-tidy5e-sheet-nolat.tidy5e-npc .profile").removeClass("roundPortrait");
+				$(".foundryvtt-tidy5e-sheet-nolat.tidy5e-vehicle .profile").removeClass("roundPortrait");
 			}
 		}
 	});
@@ -1116,18 +1116,13 @@ class ResetSettingsDialog extends FormApplication {
 		//@ts-ignore
 		return new Dialog({
 			title: game.i18n.localize(`TIDY5E.Settings.Reset.dialogs.title`),
-			content:
-				'<p style="margin-bottom:1rem;">' +
-				game.i18n.localize(`TIDY5E.Settings.Reset.dialogs.content`) +
-				"</p>",
+			content: '<p style="margin-bottom:1rem;">' + game.i18n.localize(`TIDY5E.Settings.Reset.dialogs.content`) + "</p>",
 			buttons: {
 				confirm: {
 					icon: '<i class="fas fa-check"></i>',
 					label: game.i18n.localize(`TIDY5E.Settings.Reset.dialogs.confirm`),
 					callback: async () => {
-						for (let setting of game.settings.storage
-							.get("world")
-							.filter((setting) => setting.key.startsWith(`${CONSTANTS.MODULE_ID}.`))) {
+						for (let setting of game.settings.storage.get("world").filter((setting) => setting.key.startsWith(`${CONSTANTS.MODULE_ID}.`))) {
 							log(`Reset setting '${setting.key}'`);
 							await setting.delete();
 						}

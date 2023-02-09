@@ -291,7 +291,7 @@
 	},
 	"TIDY5E.Settings.CustomExhaustionIcon": {
 		"name": "Egyéni kimerültség hatás ikon.",
-		"hint": "Beállíthatod a saját kimerültség ikonodat az alábbi kép URL-lel. Csak akkor elérhető, ha a Kimerültség Hatás \"tidy 5e\"-re vannak állítva (pl.: modules/tidy5e-sheet/images/exhaustion.svg)."
+		"hint": "Beállíthatod a saját kimerültség ikonodat az alábbi kép URL-lel. Csak akkor elérhető, ha a Kimerültség Hatás \"tidy 5e\"-re vannak állítva (pl.: modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg)."
 	},
 	"TIDY5E.Settings.CustomExhaustionEffect": {
 		"name": "Egyéni CUB kimerültség hatás név.",

@@ -3,7 +3,7 @@ export function migrateFor21X(app, html, data) {
 }
 export function migrateActorFor21X(actor) {
 	actor.update({
-		"flags.tidy5e-sheet": {
+		"flags.foundryvtt-tidy5e-sheet-nolat": {
 			gender: actor.system.details?.gender ?? "",
 			age: actor.system.details?.age ?? "",
 			height: actor.system.details?.height ?? "",

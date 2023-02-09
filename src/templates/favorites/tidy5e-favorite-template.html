@@ -1,5 +1,5 @@
 <div class="favorites list-layout">
-	<div class="tidy5e-sheet">
+	<div class="foundryvtt-tidy5e-sheet-nolat">
 	<ul class="inventory-list items-list inventory-favorites-list">
 		{{#if favItems}}
 		<li class="items-header">
@@ -40,38 +40,38 @@
 				<!-- <span class="spell-slots">
                 &ndash; / &ndash;
               </span> -->
-				{{/if}}
-			</div>
-		</li>
-		{{/if}}
-		<ul class="item-list">
-			{{#each section.spells as |spell id|}} {{> "modules/tidy5e-sheet/templates/favorites/tidy5e-favorite-item.html" item=spell}} {{/each}}
+					{{/if}}
+				</div>
+			</li>
+			{{/if}}
+			<ul class="item-list">
+				{{#each section.spells as |spell id|}} {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/tidy5e-favorite-item.html" item=spell}} {{/each}}
+			</ul>
+			{{/if}} {{/each}} {{/if}} {{#if favSpells}} {{#each favSpells as |section lvl|}} {{#if section.spells}} {{#if lvl}}
+			<li class="items-header spellbook-header">
+				<div class="spell-level-slots">
+					<h3>
+						{{#if section.isCantrip}}{{localize 'DND5E.SpellCantrip'}} {{else if section.isAlways}}{{localize 'DND5E.SpellPrepAlways'}} {{else if section.isAtWill}}{{localize 'DND5E.SpellPrepAtWill'}} {{else if
+						section.isInnate}}{{localize 'DND5E.SpellPrepInnate'}} {{else if section.isPact}}{{localize 'DND5E.SpellProgPact'}} {{else}}{{localize 'DND5E.SpellLevel'}} {{lvl}}{{/if}}
+					</h3>
+					{{#if section.isCantrip}} {{else}}
+					<span class="spell-detail spell-slots">
+						<input type="text" data-target="data.spells.spell{{lvl}}.value" value="{{section.value}}" placeholder="0" data-dtype="Number" />
+						<span class="sep">/</span>
+						<input class="spell-max" type="text" data-target="data.spells.spell{{lvl}}.override" value="{{section.max}}" placeholder="0" data-dtype="Number" />
+					</span>
+					{{/if}}
+				</div>
+				<div class="items-header-labels">
+					<div class="items-header-comps">{{localize 'TIDY5E.Components'}}</div>
+					<div class="items-header-usage">{{localize 'DND5E.SpellUsage'}}</div>
+				</div>
+			</li>
+			{{/if}}
+			<ul class="item-list">
+				{{#each section.spells as |spell id|}} {{> "modules/foundryvtt-tidy5e-sheet-nolat/templates/favorites/tidy5e-favorite-item.html" item=spell}} {{/each}}
+			</ul>
+			{{/if}} {{/each}} {{/if}}
 		</ul>
-		{{/if}} {{/each}} {{/if}} {{#if favSpells}} {{#each favSpells as |section lvl|}} {{#if section.spells}} {{#if lvl}}
-		<li class="items-header spellbook-header">
-			<div class="spell-level-slots">
-				<h3>
-					{{#if section.isCantrip}}{{localize 'DND5E.SpellCantrip'}} {{else if section.isAlways}}{{localize 'DND5E.SpellPrepAlways'}} {{else if section.isAtWill}}{{localize 'DND5E.SpellPrepAtWill'}} {{else if
-					section.isInnate}}{{localize 'DND5E.SpellPrepInnate'}} {{else if section.isPact}}{{localize 'DND5E.SpellProgPact'}} {{else}}{{localize 'DND5E.SpellLevel'}} {{lvl}}{{/if}}
-				</h3>
-				{{#if section.isCantrip}} {{else}}
-				<span class="spell-detail spell-slots">
-					<input type="text" data-target="data.spells.spell{{lvl}}.value" value="{{section.value}}" placeholder="0" data-dtype="Number" />
-					<span class="sep">/</span>
-					<input class="spell-max" type="text" data-target="data.spells.spell{{lvl}}.override" value="{{section.max}}" placeholder="0" data-dtype="Number" />
-				</span>
-				{{/if}}
-			</div>
-			<div class="items-header-labels">
-				<div class="items-header-comps">{{localize 'TIDY5E.Components'}}</div>
-				<div class="items-header-usage">{{localize 'DND5E.SpellUsage'}}</div>
-			</div>
-		</li>
-		{{/if}}
-		<ul class="item-list">
-			{{#each section.spells as |spell id|}} {{> "modules/tidy5e-sheet/templates/favorites/tidy5e-favorite-item.html" item=spell}} {{/each}}
-		</ul>
-		{{/if}} {{/each}} {{/if}}
-	</ul>
 	</div>
 </div>

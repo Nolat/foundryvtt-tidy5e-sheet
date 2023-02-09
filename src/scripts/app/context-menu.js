@@ -109,7 +109,7 @@ export const tidy5eContextMenu = function (html, sheet) {
 				].includes(obj?.name);
 			});
 			if (game.settings.get(CONSTANTS.MODULE_ID, "rightClickDisabled")) {
-				if (item.type === "spell" && !item.actor.getFlag(CONSTANTS.MODULE_ID, "tidy5e-sheet.spellbook-grid")) {
+				if (item.type === "spell" && !item.actor.getFlag(CONSTANTS.MODULE_ID, "foundryvtt-tidy5e-sheet-nolat.spellbook-grid")) {
 					contextOptions = [];
 				} else if (item.type !== "spell" && !item.actor.getFlag(CONSTANTS.MODULE_ID, "inventory-grid")) {
 					contextOptions = [];
@@ -281,10 +281,7 @@ const _getItemContextOptions = function (item) {
 	const isNPC = actor.type === "npc";
 	const isVehicle = actor.type === "vehicle";
 
-	const allowCantripToBePreparedOnContext = game.settings.get(
-		CONSTANTS.MODULE_ID,
-		"allowCantripToBePreparedOnContext"
-	);
+	const allowCantripToBePreparedOnContext = game.settings.get(CONSTANTS.MODULE_ID, "allowCantripToBePreparedOnContext");
 	let toggleClass = "";
 	let toggleTitle = "";
 	let canToggle = false;
@@ -324,9 +321,7 @@ const _getItemContextOptions = function (item) {
 		// });
 		options.push({
 			name: isAttuned ? "TIDY5E.Deattune" : "TIDY5E.Attune",
-			icon: isAttuned
-				? "<i class='fas fa-sun fa-fw' style='color: rgba(255, 30, 0, 0.65);'></i>"
-				: "<i class='fas fa-sun fa-fw'></i>",
+			icon: isAttuned ? "<i class='fas fa-sun fa-fw' style='color: rgba(255, 30, 0, 0.65);'></i>" : "<i class='fas fa-sun fa-fw'></i>",
 			callback: () =>
 				item.update({
 					"system.attunement": CONFIG.DND5E.attunementTypes[isAttuned ? "REQUIRED" : "ATTUNED"]
@@ -394,9 +389,7 @@ const _getItemContextOptions = function (item) {
 		}
 		options.push({
 			name: isFav ? "TIDY5E.RemoveFav" : "TIDY5E.AddFav",
-			icon: isFav
-				? `<i class='fas ${favoriteIcon} fa-fw'></i>`
-				: `<i class='fas ${favoriteIcon} fa-fw inactive'></i>`,
+			icon: isFav ? `<i class='fas ${favoriteIcon} fa-fw'></i>` : `<i class='fas ${favoriteIcon} fa-fw inactive'></i>`,
 			callback: () => {
 				// const item_id = ev[0].dataset.itemId; //ev.currentTarget.closest('[data-item-id]').dataset.itemId;
 				// const item = actor.items.get(item_id);

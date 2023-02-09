@@ -10,7 +10,7 @@ export class Tidy5eUserSettings extends FormApplication {
 	static get defaultOptions() {
 		return {
 			...super.defaultOptions,
-			template: "modules/tidy5e-sheet/templates/settings.html",
+			template: "modules/foundryvtt-tidy5e-sheet-nolat/templates/settings.html",
 			height: 500,
 			title: game.i18n.localize("TIDY5E.Settings.SheetMenu.title"),
 			width: 600,
@@ -37,7 +37,7 @@ export class Tidy5eUserSettings extends FormApplication {
 	}
 
 	getSettingsData() {
-		// debug(game.settings.get('tidy5e-sheet'))
+		// debug(game.settings.get('foundryvtt-tidy5e-sheet-nolat'))
 		const settings = [
 			"ammoEquippedOnly",
 			"activeEffectsMarker",
@@ -151,7 +151,7 @@ export class Tidy5eUserSettings extends FormApplication {
 			"debug"
 		];
 
-		// return game.settings.get('tidy5e-sheet', 'user-settings');
+		// return game.settings.get('foundryvtt-tidy5e-sheet-nolat', 'user-settings');
 		let data = {};
 		settings.forEach((setting) => {
 			data[setting] = { value: game.settings.get(CONSTANTS.MODULE_ID, setting) };
@@ -209,7 +209,7 @@ export class Tidy5eUserSettings extends FormApplication {
 		html.find("input#exhaustionEffectIcon").on("change", function (e) {
 			// debug(e.target.value)
 			if (e.target.value == "" || e.target.value == null) {
-				e.target.value = "modules/tidy5e-sheet/images/exhaustion.svg";
+				e.target.value = "modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg";
 			}
 		});
 	}
