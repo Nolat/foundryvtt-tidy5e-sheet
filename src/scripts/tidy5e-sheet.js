@@ -33,7 +33,7 @@ let position = 0;
 export class Tidy5eSheet extends dnd5e.applications.actor.ActorSheet5eCharacter {
 	get template() {
 		if (!game.user.isGM && this.actor.limited && !game.settings.get(CONSTANTS.MODULE_ID, "expandedSheetEnabled")) return "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/foundryvtt-tidy5e-sheet-nolat-ltd.html";
-		return "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/foundryvtt-tidy5e-sheet-nolat.html";
+		return "modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/tidy5e-sheet.html";
 	}
 
 	static get defaultOptions() {
