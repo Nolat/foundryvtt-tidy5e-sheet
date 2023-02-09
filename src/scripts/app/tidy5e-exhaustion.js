@@ -191,15 +191,16 @@ export async function updateExhaustion(actorEntity) {
 }
 
 // Hooks Update Actor
-// Hooks.on("updateActor", function (actorEntity, update, options, userId) {
-// 	if (game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") != "default") {
-// 		if (game.userId !== userId || actorEntity.constructor.name != "Actor5e") {
-// 			// Only act if we initiated the update ourselves, and the effect is a child of a character
-// 			return;
-// 		}
-// 		updateExhaustion(actorEntity);
-// 	}
-// });
+Hooks.on("updateActor", function (actorEntity, update, options, userId) {
+	if (game.settings.get(CONSTANTS.MODULE_ID, "exhaustionEffectsEnabled") != "default") {
+		if (game.userId !== userId || actorEntity.constructor.name != "Actor5e") {
+			// Only act if we initiated the update ourselves, and the effect is a child of a character
+			return;
+		}
+		updateExhaustion(actorEntity);
+	}
+	// console.log('actor updated!')
+});
 
 // Rest reduces by 1
 Hooks.on(`dnd5e.restComplete`, (actorEntity, data) => {

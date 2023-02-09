@@ -236,7 +236,7 @@ export class Tidy5eSheet extends dnd5e.applications.actor.ActorSheet5eCharacter 
 				if (actor.constructor.name != "Actor5e") {
 					// Only act if we initiated the update ourselves, and the effect is a child of a character
 				} else {
-					updateExhaustion(actor);
+					// updateExhaustion(actor);
 				}
 			}
 		});
