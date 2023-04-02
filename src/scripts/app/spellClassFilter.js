@@ -58,7 +58,7 @@ export async function applySpellClassFilterItemSheet(app, html, itemData) {
 		const spellDetailsDiv = html.find(".tab.details");
 		const firstChild = spellDetailsDiv.children("h3:first");
 		const spellClassForm = await renderTemplate(
-			"modules/tidy5e-sheet/templates/items/tidy5e-spell-class-filter-form.html",
+			"modules/foundryvtt-tidy5e-sheet-nolat/templates/items/tidy5e-spell-class-filter-form.html",
 			{
 				SCF: classesConfigurationTmp,
 				item,
@@ -118,7 +118,7 @@ export async function applySpellClassFilterActorSheet(app, html, actorData) {
 				}
 			}
 			const actorClassFilter = await renderTemplate(
-				"modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-class-filter.html",
+				"modules/foundryvtt-tidy5e-sheet-nolat/templates/actors/parts/tidy5e-spellbook-class-filter.html",
 				{
 					SCF: classesConfigurationTmp,
 					actor,

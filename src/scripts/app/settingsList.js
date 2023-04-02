@@ -531,7 +531,7 @@ export function settingsList() {
 		scope: "world",
 		config: false,
 		type: String,
-		default: "modules/tidy5e-sheet/images/exhaustion.svg"
+		default: "modules/foundryvtt-tidy5e-sheet-nolat/images/exhaustion.svg"
 	});
 
 	game.settings.register(CONSTANTS.MODULE_ID, "exhaustionEffectCustom", {
